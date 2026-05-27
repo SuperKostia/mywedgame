@@ -191,6 +191,13 @@
     }
     .form-group textarea { resize: vertical; min-height: 100px; }
     .form-group select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235C5653' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+    .collectible-picker { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .coll-tag { cursor: pointer; }
+    .coll-tag input { display: none; }
+    .coll-wrap { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem 0.5rem 0.6rem; border-radius: 100px; border: 1.5px solid var(--cream-dark); background: var(--cream); font-size: 0.9rem; color: var(--charcoal); transition: all 0.25s; user-select: none; }
+    .coll-tag input:checked + .coll-wrap { border-color: var(--coral); background: var(--coral-light); color: var(--charcoal); }
+    .coll-tag:hover .coll-wrap { border-color: var(--coral); }
+    .coll-icon { width: 28px; height: 24px; flex-shrink: 0; }
     .form-submit { text-align: center; margin-top: 1.5rem; }
     .form-note { font-size: 0.82rem; color: var(--charcoal-light); margin-top: 0.75rem; }
 
@@ -516,6 +523,35 @@
           <input type="email" name="email" required>
         </div>
         <div class="form-group full">
+          <label><span class="fr">Objets à collecter <small>(2 max)</small></span><span class="en">Collectibles <small>(2 max)</small></span></label>
+          <div class="collectible-picker" id="collectiblePicker">
+            <label class="coll-tag">
+              <input type="checkbox" name="collectibles" value="coeur">
+              <span class="coll-wrap"><svg class="coll-icon" viewBox="0 0 7 6" shape-rendering="crispEdges"><rect fill="#E05A5A" x="1" y="0" width="2" height="1"/><rect fill="#E05A5A" x="4" y="0" width="2" height="1"/><rect fill="#F2A5A0" x="1" y="0" width="1" height="1"/><rect fill="#D4736C" x="0" y="1" width="7" height="1"/><rect fill="#E05A5A" x="1" y="1" width="1" height="1"/><rect fill="#D4736C" x="0" y="2" width="7" height="1"/><rect fill="#C4584A" x="1" y="3" width="5" height="1"/><rect fill="#B04030" x="2" y="4" width="3" height="1"/><rect fill="#8C3228" x="3" y="5" width="1" height="1"/></svg><span class="fr">Cœur</span><span class="en">Heart</span></span>
+            </label>
+            <label class="coll-tag">
+              <input type="checkbox" name="collectibles" value="alliance">
+              <span class="coll-wrap"><svg class="coll-icon" viewBox="0 0 7 7" shape-rendering="crispEdges"><rect fill="#C9A96E" x="2" y="0" width="3" height="1"/><rect fill="#E0F0FF" x="3" y="0" width="1" height="1"/><rect fill="#C9A96E" x="1" y="1" width="1" height="1"/><rect fill="#E8D5AD" x="2" y="1" width="3" height="1"/><rect fill="#C9A96E" x="5" y="1" width="1" height="1"/><rect fill="#C9A96E" x="0" y="2" width="1" height="3"/><rect fill="#C9A96E" x="6" y="2" width="1" height="3"/><rect fill="#E8D5AD" x="1" y="2" width="1" height="1"/><rect fill="#C9A96E" x="1" y="5" width="1" height="1"/><rect fill="#C9A96E" x="5" y="5" width="1" height="1"/><rect fill="#C9A96E" x="2" y="6" width="3" height="1"/></svg><span class="fr">Alliance</span><span class="en">Ring</span></span>
+            </label>
+            <label class="coll-tag">
+              <input type="checkbox" name="collectibles" value="bouquet">
+              <span class="coll-wrap"><svg class="coll-icon" viewBox="0 0 7 8" shape-rendering="crispEdges"><rect fill="#E88BA0" x="3" y="0" width="1" height="1"/><rect fill="#F2A5B5" x="2" y="1" width="1" height="1"/><rect fill="#E05A70" x="3" y="1" width="1" height="1"/><rect fill="#F2A5B5" x="4" y="1" width="1" height="1"/><rect fill="#E88BA0" x="1" y="2" width="1" height="1"/><rect fill="#F2D5DD" x="2" y="2" width="1" height="1"/><rect fill="#FFE0E8" x="3" y="2" width="1" height="1"/><rect fill="#F2D5DD" x="4" y="2" width="1" height="1"/><rect fill="#E88BA0" x="5" y="2" width="1" height="1"/><rect fill="#F2A5B5" x="0" y="3" width="1" height="1"/><rect fill="#E05A70" x="1" y="3" width="1" height="1"/><rect fill="#FFE0E8" x="2" y="3" width="1" height="1"/><rect fill="#E05A70" x="3" y="3" width="1" height="1"/><rect fill="#FFE0E8" x="4" y="3" width="1" height="1"/><rect fill="#E05A70" x="5" y="3" width="1" height="1"/><rect fill="#F2A5B5" x="6" y="3" width="1" height="1"/><rect fill="#7BAE8E" x="1" y="4" width="2" height="1"/><rect fill="#5C8C6E" x="3" y="4" width="1" height="1"/><rect fill="#7BAE8E" x="4" y="4" width="2" height="1"/><rect fill="#7BAE8E" x="2" y="5" width="1" height="1"/><rect fill="#5C8C6E" x="3" y="5" width="1" height="1"/><rect fill="#7BAE8E" x="4" y="5" width="1" height="1"/><rect fill="#5C8C6E" x="3" y="6" width="1" height="1"/><rect fill="#C9A96E" x="2" y="7" width="3" height="1"/></svg><span class="fr">Bouquet</span><span class="en">Bouquet</span></span>
+            </label>
+            <label class="coll-tag">
+              <input type="checkbox" name="collectibles" value="etoile">
+              <span class="coll-wrap"><svg class="coll-icon" viewBox="0 0 7 7" shape-rendering="crispEdges"><rect fill="#F5D76E" x="3" y="0" width="1" height="1"/><rect fill="#E8C84A" x="2" y="1" width="1" height="1"/><rect fill="#FFE88A" x="3" y="1" width="1" height="1"/><rect fill="#E8C84A" x="4" y="1" width="1" height="1"/><rect fill="#C9A96E" x="0" y="2" width="2" height="1"/><rect fill="#F5D76E" x="2" y="2" width="1" height="1"/><rect fill="#FFE88A" x="3" y="2" width="1" height="1"/><rect fill="#F5D76E" x="4" y="2" width="1" height="1"/><rect fill="#C9A96E" x="5" y="2" width="2" height="1"/><rect fill="#E8C84A" x="1" y="3" width="1" height="1"/><rect fill="#FFE88A" x="2" y="3" width="3" height="1"/><rect fill="#E8C84A" x="5" y="3" width="1" height="1"/><rect fill="#F5D76E" x="2" y="4" width="3" height="1"/><rect fill="#E8C84A" x="1" y="5" width="1" height="1"/><rect fill="#F5D76E" x="2" y="5" width="1" height="1"/><rect fill="#F5D76E" x="4" y="5" width="1" height="1"/><rect fill="#E8C84A" x="5" y="5" width="1" height="1"/><rect fill="#C9A96E" x="0" y="6" width="1" height="1"/><rect fill="#C9A96E" x="6" y="6" width="1" height="1"/></svg><span class="fr">Étoile</span><span class="en">Star</span></span>
+            </label>
+            <label class="coll-tag">
+              <input type="checkbox" name="collectibles" value="diamant">
+              <span class="coll-wrap"><svg class="coll-icon" viewBox="0 0 7 6" shape-rendering="crispEdges"><rect fill="#A8D8EA" x="2" y="0" width="3" height="1"/><rect fill="#88C8E8" x="1" y="1" width="1" height="1"/><rect fill="#E0F0FF" x="3" y="1" width="1" height="1"/><rect fill="#88C8E8" x="2" y="1" width="1" height="1"/><rect fill="#88C8E8" x="4" y="1" width="1" height="1"/><rect fill="#88C8E8" x="5" y="1" width="1" height="1"/><rect fill="#62B0D0" x="0" y="2" width="7" height="1"/><rect fill="#A8D8EA" x="2" y="2" width="1" height="1"/><rect fill="#E0F0FF" x="3" y="2" width="1" height="1"/><rect fill="#A8D8EA" x="4" y="2" width="1" height="1"/><rect fill="#88C8E8" x="1" y="3" width="5" height="1"/><rect fill="#A8D8EA" x="3" y="3" width="1" height="1"/><rect fill="#62B0D0" x="2" y="4" width="3" height="1"/><rect fill="#88C8E8" x="3" y="4" width="1" height="1"/><rect fill="#62B0D0" x="3" y="5" width="1" height="1"/></svg><span class="fr">Diamant</span><span class="en">Diamond</span></span>
+            </label>
+            <label class="coll-tag">
+              <input type="checkbox" name="collectibles" value="lettre">
+              <span class="coll-wrap"><svg class="coll-icon" viewBox="0 0 7 6" shape-rendering="crispEdges"><rect fill="#F0EBE3" x="0" y="0" width="7" height="6"/><rect fill="#D4C8B8" x="0" y="0" width="1" height="1"/><rect fill="#E0D8CC" x="1" y="0" width="5" height="1"/><rect fill="#D4C8B8" x="6" y="0" width="1" height="1"/><rect fill="#D4C8B8" x="1" y="1" width="1" height="1"/><rect fill="#D4C8B8" x="5" y="1" width="1" height="1"/><rect fill="#D4C8B8" x="2" y="2" width="1" height="1"/><rect fill="#D4C8B8" x="4" y="2" width="1" height="1"/><rect fill="#D4736C" x="3" y="2" width="1" height="1"/><rect fill="#E05A5A" x="2" y="3" width="1" height="1"/><rect fill="#D4736C" x="3" y="3" width="1" height="1"/><rect fill="#E05A5A" x="4" y="3" width="1" height="1"/><rect fill="#D4736C" x="3" y="4" width="1" height="1"/><rect fill="#D4C8B8" x="0" y="5" width="7" height="1"/></svg><span class="fr">Lettre d'amour</span><span class="en">Love letter</span></span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group full">
           <label><span class="fr">Racontez-nous votre histoire</span><span class="en">Tell us your story</span></label>
           <textarea name="story" rows="4"></textarea>
         </div>
@@ -634,10 +670,18 @@
   });
 
   var form = document.getElementById('configForm');
+  var picker = document.getElementById('collectiblePicker');
+  var maxColl = 2;
+  picker.addEventListener('change', function(e) {
+    var checked = picker.querySelectorAll('input:checked');
+    if (checked.length > maxColl) { e.target.checked = false; }
+  });
+
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     var d = new FormData(form);
     var lang = document.documentElement.lang;
+    var collectibles = d.getAll('collectibles').join(', ') || (lang === 'fr' ? 'non choisi' : 'not chosen');
     var subject = lang === 'fr' ? 'Nouveau jeu MyWedGame' : 'New MyWedGame request';
     var body = '';
     body += (lang === 'fr' ? 'Marié : ' : 'Groom: ') + d.get('groom') + '\n';
@@ -645,6 +689,7 @@
     body += (lang === 'fr' ? 'Date : ' : 'Date: ') + d.get('date') + '\n';
     body += (lang === 'fr' ? 'Lieu : ' : 'Location: ') + d.get('location') + '\n';
     body += (lang === 'fr' ? 'Niveaux : ' : 'Levels: ') + d.get('levels') + '\n';
+    body += (lang === 'fr' ? 'Collectibles : ' : 'Collectibles: ') + collectibles + '\n';
     body += (lang === 'fr' ? 'Email : ' : 'Email: ') + d.get('email') + '\n\n';
     body += (lang === 'fr' ? 'Histoire :\n' : 'Story:\n') + d.get('story') + '\n\n';
     body += (lang === 'fr' ? 'Détails fun :\n' : 'Fun details:\n') + d.get('details');
