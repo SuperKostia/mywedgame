@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @font-face { font-family: 'Apfel'; src: url('fonts/ApfelGrotezk-Fett.woff2') format('woff2'); font-weight: 700; }
+  @font-face { font-family: 'Terminal'; src: url('fonts/terminal-grotesque-webfont.woff2') format('woff2'); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px; height: 630px; overflow: hidden;
+    background: #FAF7F2;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    font-family: 'Apfel', sans-serif;
+  }
+  .content { text-align: center; z-index: 2; position: relative; }
+  .logo-line {
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+    font-size: 64px; font-weight: 700; letter-spacing: -0.03em; color: #2A2724;
+  }
+  .logo-wed { font-family: 'Terminal', sans-serif; font-weight: 400; color: #D4736C; text-transform: uppercase; font-size: 80px; letter-spacing: 0.01em; }
+  .heart svg { width: 64px; height: 55px; }
+  .tagline {
+    font-family: 'Terminal', sans-serif;
+    font-size: 36px;
+    color: #2A2724;
+    text-transform: uppercase;
+    margin-top: 28px;
+    letter-spacing: 0.02em;
+  }
+  .tagline em { color: #D4736C; font-style: normal; }
+  .price {
+    font-family: 'Apfel', sans-serif;
+    font-size: 22px;
+    color: #5C5653;
+    margin-top: 16px;
+  }
+  .price strong { color: #D4736C; }
+  .bottom-bar {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 8px;
+    background: linear-gradient(90deg, #D4736C, #C9A96E);
+  }
+  .hearts-bg {
+    position: absolute; inset: 0; pointer-events: none; opacity: 0.06;
+  }
+  .hearts-bg svg { position: absolute; }
+</style>
+</head>
+<body>
+  <div class="hearts-bg">
+    <svg viewBox="0 0 7 6" shape-rendering="crispEdges" fill="#D4736C" style="width:80px;height:69px;top:40px;left:60px"><rect x="1" y="0" width="2" height="1"/><rect x="4" y="0" width="2" height="1"/><rect x="0" y="1" width="7" height="2"/><rect x="1" y="3" width="5" height="1"/><rect x="2" y="4" width="3" height="1"/><rect x="3" y="5" width="1" height="1"/></svg>
+    <svg viewBox="0 0 7 6" shape-rendering="crispEdges" fill="#C9A96E" style="width:50px;height:43px;top:120px;right:100px"><rect x="1" y="0" width="2" height="1"/><rect x="4" y="0" width="2" height="1"/><rect x="0" y="1" width="7" height="2"/><rect x="1" y="3" width="5" height="1"/><rect x="2" y="4" width="3" height="1"/><rect x="3" y="5" width="1" height="1"/></svg>
+    <svg viewBox="0 0 7 6" shape-rendering="crispEdges" fill="#D4736C" style="width:60px;height:51px;bottom:60px;left:150px"><rect x="1" y="0" width="2" height="1"/><rect x="4" y="0" width="2" height="1"/><rect x="0" y="1" width="7" height="2"/><rect x="1" y="3" width="5" height="1"/><rect x="2" y="4" width="3" height="1"/><rect x="3" y="5" width="1" height="1"/></svg>
+    <svg viewBox="0 0 7 6" shape-rendering="crispEdges" fill="#D4736C" style="width:45px;height:39px;bottom:100px;right:80px"><rect x="1" y="0" width="2" height="1"/><rect x="4" y="0" width="2" height="1"/><rect x="0" y="1" width="7" height="2"/><rect x="1" y="3" width="5" height="1"/><rect x="2" y="4" width="3" height="1"/><rect x="3" y="5" width="1" height="1"/></svg>
+    <svg viewBox="0 0 7 6" shape-rendering="crispEdges" fill="#C9A96E" style="width:35px;height:30px;top:80px;left:900px"><rect x="1" y="0" width="2" height="1"/><rect x="4" y="0" width="2" height="1"/><rect x="0" y="1" width="7" height="2"/><rect x="1" y="3" width="5" height="1"/><rect x="2" y="4" width="3" height="1"/><rect x="3" y="5" width="1" height="1"/></svg>
+  </div>
+  <div class="content">
+    <div class="logo-line">
+      <span class="heart"><svg viewBox="0 0 7 6" shape-rendering="crispEdges" fill="#D4736C"><rect x="1" y="0" width="2" height="1"/><rect x="4" y="0" width="2" height="1"/><rect x="0" y="1" width="7" height="2"/><rect x="1" y="3" width="5" height="1"/><rect x="2" y="4" width="3" height="1"/><rect x="3" y="5" width="1" height="1"/></svg></span>
+      <span>My<span class="logo-wed">Wed</span>Game</span>
+    </div>
+    <div class="tagline">Un jeu vidéo sur mesure<br>pour <em>votre mariage</em></div>
+    <div class="price">À partir de <strong>699 € TTC</strong></div>
+  </div>
+  <div class="bottom-bar"></div>
+</body>
+</html>
