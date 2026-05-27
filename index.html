@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyWedGame — Jeu vidéo sur mesure pour votre mariage</title>
+  <meta name="description" content="Offrez à vos invités un jeu vidéo unique, entièrement personnalisé à votre histoire d'amour. À partir de 699 €.">
+  <meta property="og:title" content="MyWedGame — Un jeu vidéo sur mesure pour votre mariage">
+  <meta property="og:description" content="Un jeu vidéo unique et interactif, créé à partir de votre histoire d'amour. Jouable sur tous les appareils.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 6' shape-rendering='crispEdges'><rect fill='%23D4736C' x='1' y='0' width='2' height='1'/><rect fill='%23D4736C' x='4' y='0' width='2' height='1'/><rect fill='%23D4736C' x='0' y='1' width='7' height='2'/><rect fill='%23D4736C' x='1' y='3' width='5' height='1'/><rect fill='%23D4736C' x='2' y='4' width='3' height='1'/><rect fill='%23D4736C' x='3' y='5' width='1' height='1'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FAF7F2;
+      --cream-dark: #F0EBE3;
+      --charcoal: #2A2724;
+      --charcoal-light: #5C5653;
+      --coral: #D4736C;
+      --coral-hover: #BD5B54;
+      --coral-light: #F2DAD7;
+      --coral-soft: rgba(212,115,108,0.08);
+      --gold: #C9A96E;
+      --gold-light: #E8D5AD;
+      --dark: #1C1917;
+      --dark-card: #292524;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body { font-family: 'DM Sans', sans-serif; color: var(--charcoal); background: var(--cream); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    html:not([lang="en"]) .en { display: none !important; }
+    html[lang="en"] .fr { display: none !important; }
+
+    .rv { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .rv.vis { opacity: 1; transform: none; }
+    .rv-d1 { transition-delay: 0.1s; }
+    .rv-d2 { transition-delay: 0.2s; }
+    .rv-d3 { transition-delay: 0.3s; }
+    .rv-d4 { transition-delay: 0.4s; }
+    .rv-d5 { transition-delay: 0.5s; }
+
+    .ctn { max-width: 1100px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 3rem); }
+    section { padding: clamp(4rem, 8vw, 7rem) 0; }
+
+    h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.2; margin-bottom: 1rem; }
+    .section-tag { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--coral); margin-bottom: 1rem; }
+    .section-tag::before { content: ''; width: 8px; height: 8px; background: var(--coral); transform: rotate(45deg); }
+    .section-sub { font-size: clamp(1rem, 1.5vw, 1.15rem); color: var(--charcoal-light); max-width: 600px; line-height: 1.7; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 2rem; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500; text-decoration: none; transition: all 0.3s ease; cursor: pointer; border: none; }
+    .btn-primary { background: var(--charcoal); color: var(--cream); }
+    .btn-primary:hover { background: var(--coral); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,115,108,0.3); }
+    .btn-outline { background: transparent; color: var(--charcoal); border: 1.5px solid var(--charcoal); }
+    .btn-outline:hover { background: var(--charcoal); color: var(--cream); transform: translateY(-2px); }
+    .btn-coral { background: var(--coral); color: white; }
+    .btn-coral:hover { background: var(--coral-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,115,108,0.3); }
+    .btn-light { background: rgba(250,247,242,0.15); color: var(--cream); border: 1.5px solid rgba(250,247,242,0.3); }
+    .btn-light:hover { background: var(--cream); color: var(--charcoal); transform: translateY(-2px); }
+    .btn-sm { padding: 0.6rem 1.4rem; font-size: 0.85rem; }
+
+    /* NAV */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 0; transition: padding 0.4s, background 0.4s, box-shadow 0.4s; }
+    .nav.scrolled { background: rgba(250,247,242,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 0.75rem 0; box-shadow: 0 1px 0 rgba(0,0,0,0.06); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .logo { text-decoration: none; font-size: 1.35rem; letter-spacing: -0.02em; display: inline-flex; align-items: center; gap: 0.5rem; }
+    .logo-heart { width: 28px; height: 24px; flex-shrink: 0; }
+    .logo-my { font-family: 'DM Sans', sans-serif; font-weight: 400; color: var(--charcoal); }
+    .logo-wed { font-family: 'Playfair Display', serif; font-style: italic; color: var(--coral); }
+    .logo-game { font-family: 'DM Sans', sans-serif; font-weight: 700; color: var(--charcoal); }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--charcoal); font-size: 0.9rem; font-weight: 500; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px; background: var(--coral); transition: width 0.3s; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-right { display: flex; align-items: center; gap: 1.25rem; }
+    .lang-toggle { display: flex; border: 1.5px solid var(--charcoal); border-radius: 100px; overflow: hidden; }
+    .lang-btn { padding: 0.35rem 0.85rem; font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; cursor: pointer; background: none; border: none; color: var(--charcoal); transition: all 0.3s; }
+    .lang-btn.active { background: var(--charcoal); color: var(--cream); }
+    .menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .menu-toggle span { display: block; width: 22px; height: 2px; background: var(--charcoal); border-radius: 2px; transition: all 0.3s; transform-origin: center; }
+    .nav.open .menu-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav.open .menu-toggle span:nth-child(2) { opacity: 0; }
+    .nav.open .menu-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; padding-top: 80px; }
+    .hero-content { position: relative; z-index: 2; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4.2rem); font-weight: 700; line-height: 1.15; color: var(--charcoal); max-width: 780px; margin: 0 auto 1.5rem; }
+    .hero h1 em { font-style: italic; color: var(--coral); }
+    .hero-sub { font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--charcoal-light); max-width: 540px; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .hero-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    .hero-price { margin-top: 1.5rem; font-size: 0.9rem; color: var(--charcoal-light); }
+    .hero-price strong { color: var(--coral); font-weight: 600; }
+    .hero-hearts { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 1; }
+    .fh { position: absolute; bottom: -20%; animation: floatH var(--d, 12s) var(--dl, 0s) linear infinite; pointer-events: none; opacity: 0; }
+    @keyframes floatH {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      8% { opacity: var(--o, 0.15); }
+      85% { opacity: var(--o, 0.15); }
+      100% { transform: translateY(-120vh) rotate(var(--r, 15deg)); opacity: 0; }
+    }
+
+    /* DEMO */
+    #demo { background: var(--dark); color: var(--cream); }
+    #demo h2 { color: var(--cream); }
+    #demo .section-tag { color: var(--gold); }
+    #demo .section-tag::before { background: var(--gold); }
+    #demo .section-sub { color: rgba(250,247,242,0.65); }
+    .game-wrap { position: relative; width: 100%; max-width: 900px; margin: 2.5rem auto 0; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5); aspect-ratio: 16/9; background: #000; }
+    .game-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+    .game-overlay { position: absolute; inset: 0; background: rgba(28,25,23,0.7); display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; z-index: 2; transition: opacity 0.5s; border-radius: 12px; }
+    .game-overlay.hidden { opacity: 0; pointer-events: none; }
+    .play-ring { width: 80px; height: 80px; border: 2.5px solid rgba(250,247,242,0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; transition: all 0.3s; }
+    .game-overlay:hover .play-ring { background: var(--coral); border-color: var(--coral); transform: scale(1.1); }
+    .play-ring::after { content: ''; border-style: solid; border-width: 10px 0 10px 18px; border-color: transparent transparent transparent var(--cream); margin-left: 4px; }
+    .game-overlay span { font-size: 0.9rem; color: rgba(250,247,242,0.6); }
+    .demo-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 2rem; }
+    .demo-tag { background: var(--dark-card); color: var(--gold-light); padding: 0.5rem 1.15rem; border-radius: 100px; font-size: 0.82rem; font-weight: 500; border: 1px solid rgba(201,169,110,0.15); }
+
+    /* STORY */
+    #story { background: var(--cream); }
+    .story-layout { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; margin-top: 2rem; }
+    .story-text { font-size: 1.05rem; line-height: 1.8; color: var(--charcoal-light); }
+    .story-text p + p { margin-top: 1rem; }
+    .story-text em { color: var(--coral); font-style: normal; font-weight: 600; }
+    .story-visual { background: var(--cream-dark); border-radius: 16px; padding: clamp(2rem, 4vw, 3rem); position: relative; overflow: hidden; }
+    .story-quote { font-family: 'Playfair Display', serif; font-size: clamp(1.25rem, 2.5vw, 1.6rem); font-style: italic; color: var(--charcoal); line-height: 1.5; position: relative; padding-left: 1.5rem; border-left: 3px solid var(--coral); }
+    .story-stat { display: flex; gap: 2rem; margin-top: 2rem; }
+    .story-stat div { text-align: center; }
+    .story-stat .num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--coral); display: block; }
+    .story-stat .lbl { font-size: 0.8rem; color: var(--charcoal-light); text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* CUSTOMIZE */
+    #customize { background: var(--cream-dark); }
+    .custom-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .custom-card { background: white; padding: 2rem 1.75rem; border-radius: 12px; position: relative; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+    .custom-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+    .custom-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent, var(--coral)); }
+    .custom-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 0.5rem; }
+    .custom-card p { font-size: 0.92rem; color: var(--charcoal-light); line-height: 1.6; }
+    .c1 { --accent: #D4736C; } .c2 { --accent: #7BAE8E; } .c3 { --accent: #C9A96E; }
+    .c4 { --accent: #8B9DC3; } .c5 { --accent: #D4A0A0; } .c6 { --accent: #B8A090; }
+
+    /* PROCESS */
+    #process { background: var(--cream); }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2.5rem; }
+    .step { text-align: center; }
+    .step-num { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 5vw, 4rem); font-weight: 700; color: var(--coral-light); line-height: 1; margin-bottom: 0.75rem; }
+    .step h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .step p { font-size: 0.92rem; color: var(--charcoal-light); line-height: 1.6; max-width: 300px; margin: 0 auto; }
+
+    /* PRICING */
+    #pricing { background: var(--cream-dark); }
+    .price-box { max-width: 700px; margin: 2.5rem auto 0; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+    .price-main { padding: clamp(2rem, 5vw, 3rem); display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+    .price-left { flex: 1; min-width: 240px; }
+    .price-amount { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 700; color: var(--charcoal); line-height: 1; }
+    .price-amount small { font-size: 0.45em; font-weight: 400; color: var(--charcoal-light); vertical-align: baseline; }
+    .price-subtitle { font-size: 1.05rem; color: var(--charcoal-light); margin-top: 0.5rem; }
+    .price-right { flex: 1; min-width: 240px; }
+    .price-includes { list-style: none; }
+    .price-includes li { padding: 0.4rem 0; font-size: 0.95rem; display: flex; align-items: flex-start; gap: 0.6rem; }
+    .price-includes li::before { content: '\2713'; color: var(--coral); font-weight: 700; flex-shrink: 0; margin-top: 0.1rem; }
+    .price-extra { background: var(--coral-soft); padding: 1.25rem clamp(2rem, 5vw, 3rem); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-top: 1px solid var(--coral-light); }
+    .price-extra-text { font-size: 0.95rem; }
+    .price-extra-text strong { color: var(--coral); }
+    .price-cta { text-align: center; padding: 0 clamp(2rem, 5vw, 3rem) clamp(2rem, 5vw, 3rem); }
+
+    /* FORM */
+    #configurator { background: var(--cream); }
+    .form-box { max-width: 700px; margin: 2.5rem auto 0; background: white; border-radius: 20px; padding: clamp(2rem, 5vw, 3rem); box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label { font-size: 0.85rem; font-weight: 500; color: var(--charcoal); }
+    .form-group input, .form-group select, .form-group textarea {
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem; padding: 0.75rem 1rem;
+      border: 1.5px solid var(--cream-dark); border-radius: 10px; background: var(--cream);
+      color: var(--charcoal); transition: border-color 0.3s, box-shadow 0.3s; outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--coral); box-shadow: 0 0 0 3px rgba(212,115,108,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-group select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235C5653' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+    .form-submit { text-align: center; margin-top: 1.5rem; }
+    .form-note { font-size: 0.82rem; color: var(--charcoal-light); margin-top: 0.75rem; }
+
+    /* FAQ */
+    #faq { background: var(--cream-dark); }
+    .faq-list { max-width: 750px; margin: 2.5rem auto 0; }
+    .faq-item { border-bottom: 1px solid rgba(0,0,0,0.08); }
+    .faq-q { width: 100%; text-align: left; background: none; border: none; padding: 1.25rem 0; font-family: 'DM Sans', sans-serif; font-size: 1.05rem; font-weight: 500; color: var(--charcoal); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; line-height: 1.5; }
+    .faq-q::after { content: '+'; font-size: 1.5rem; font-weight: 300; color: var(--coral); transition: transform 0.3s; flex-shrink: 0; }
+    .faq-item.open .faq-q::after { transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-a p { padding-bottom: 1.25rem; font-size: 0.95rem; color: var(--charcoal-light); line-height: 1.7; }
+    .faq-item.open .faq-a { max-height: 300px; }
+
+    /* FOOTER */
+    footer { background: var(--dark); color: rgba(250,247,242,0.45); padding: 3rem 0; text-align: center; font-size: 0.85rem; }
+    footer .logo { justify-content: center; margin-bottom: 0.75rem; font-size: 1.1rem; }
+    footer .logo-my, footer .logo-game { color: rgba(250,247,242,0.6); }
+    footer .logo-wed { color: var(--coral); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .custom-grid, .steps { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .story-layout { grid-template-columns: 1fr; }
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; background: rgba(250,247,242,0.98); backdrop-filter: blur(12px); padding: 1.5rem clamp(1.5rem, 5vw, 3rem); box-shadow: 0 8px 24px rgba(0,0,0,0.1); gap: 0.5rem; }
+      .nav.open .nav-links { display: flex; }
+      .menu-toggle { display: flex; }
+      .nav-cta-desktop { display: none !important; }
+      .hero-btns { flex-direction: column; align-items: center; }
+      .price-main { flex-direction: column; text-align: center; }
+      .price-extra { flex-direction: column; text-align: center; }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .custom-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="ph" viewBox="0 0 7 6">
+    <rect x="1" y="0" width="2" height="1"/>
+    <rect x="4" y="0" width="2" height="1"/>
+    <rect x="0" y="1" width="7" height="2"/>
+    <rect x="1" y="3" width="5" height="1"/>
+    <rect x="2" y="4" width="3" height="1"/>
+    <rect x="3" y="5" width="1" height="1"/>
+  </symbol>
+</svg>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="ctn nav-inner">
+    <a href="#" class="logo"><svg class="logo-heart" viewBox="0 0 7 6" shape-rendering="crispEdges" fill="var(--coral)"><use href="#ph"/></svg><span class="logo-my">My</span><span class="logo-wed">Wed</span><span class="logo-game">Game</span></a>
+    <ul class="nav-links">
+      <li><a href="#demo"><span class="fr">Exemple</span><span class="en">Demo</span></a></li>
+      <li><a href="#story"><span class="fr">Notre histoire</span><span class="en">Our story</span></a></li>
+      <li><a href="#pricing"><span class="fr">Tarif</span><span class="en">Pricing</span></a></li>
+      <li><a href="#configurator"><span class="fr">Configurer</span><span class="en">Configure</span></a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <a href="#configurator" class="btn btn-primary btn-sm nav-cta-desktop"><span class="fr">Devis gratuit</span><span class="en">Free quote</span></a>
+      <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" class="hero">
+  <div class="hero-hearts">
+    <svg class="fh" style="left:5%;--d:14s;--dl:-2s;--o:0.15;--r:10deg;fill:var(--coral-light)" width="21" height="18" viewBox="0 0 7 6" shape-rendering="crispEdges"><use href="#ph"/></svg>
+    <svg class="fh" style="left:15%;--d:11s;--dl:-8s;--o:0.1;--r:-12deg;fill:var(--coral-light)" width="14" height="12" viewBox="0 0 7 6" shape-rendering="crispEdges"><use href="#ph"/></svg>
+    <svg class="fh" style="left:32%;--d:16s;--dl:-3s;--o:0.18;--r:20deg;fill:var(--coral)" width="24" height="21" viewBox="0 0 7 6" shape-rendering="crispEdges"><use href="#ph"/></svg>
+    <svg class="fh" style="left:48%;--d:13s;--dl:-10s;--o:0.08;--r:-8deg;fill:var(--gold-light)" width="17" height="15" viewBox="0 0 7 6" shape-rendering="crispEdges"><use href="#ph"/></svg>
+    <svg class="fh" style="left:62%;--d:15s;--dl:-5s;--o:0.14;--r:15deg;fill:var(--coral-light)" width="21" height="18" viewBox="0 0 7 6" shape-rendering="crispEdges"><use href="#ph"/></svg>
+    <svg class="fh" style="left:78%;--d:12s;--dl:-1s;--o:0.12;--r:-18deg;fill:var(--coral)" width="18" height="15" viewBox="0 0 7 6" shape-rendering="crispEdges"><use href="#ph"/></svg>
+    <svg class="fh" style="left:90%;--d:17s;--dl:-7s;--o:0.09;--r:12deg;fill:var(--gold)" width="12" height="10" viewBox="0 0 7 6" shape-rendering="crispEdges"><use href="#ph"/></svg>
+    <svg class="fh" style="left:52%;--d:18s;--dl:-13s;--o:0.06;--r:-5deg;fill:var(--coral-light)" width="28" height="24" viewBox="0 0 7 6" shape-rendering="crispEdges"><use href="#ph"/></svg>
+  </div>
+  <div class="hero-content ctn">
+    <h1 class="rv">
+      <span class="fr">Votre histoire d'amour<br>mérite son propre <em>jeu vidéo</em></span>
+      <span class="en">Your love story<br>deserves its own <em>video game</em></span>
+    </h1>
+    <p class="hero-sub rv rv-d1">
+      <span class="fr">Offrez à vos invités une expérience interactive et unique, entièrement créée à partir de votre histoire.</span>
+      <span class="en">Give your guests a unique interactive experience, entirely crafted from your love story.</span>
+    </p>
+    <div class="hero-btns rv rv-d2">
+      <a href="#demo" class="btn btn-primary"><span class="fr">Voir la démo</span><span class="en">See the demo</span></a>
+      <a href="#configurator" class="btn btn-outline"><span class="fr">Configurer mon jeu</span><span class="en">Configure my game</span></a>
+    </div>
+    <p class="hero-price rv rv-d3">
+      <span class="fr">À partir de <strong>699 &euro; TTC</strong></span>
+      <span class="en">Starting at <strong>&euro;699 incl. VAT</strong></span>
+    </p>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section id="demo">
+  <div class="ctn" style="text-align:center">
+    <div class="section-tag rv"><span class="fr">Exemple</span><span class="en">Demo</span></div>
+    <h2 class="rv rv-d1">
+      <span class="fr">Le jeu de Caroline &amp; Gustave</span>
+      <span class="en">Caroline &amp; Gustave's game</span>
+    </h2>
+    <p class="section-sub rv rv-d2" style="margin:0 auto 0">
+      <span class="fr">Pour leur mariage à l'île Maurice, on a créé un runner pixel-art où Gustave traverse l'île au volant de son Ford Raptor pour rejoindre Caroline. Chaque élément est sur mesure.</span>
+      <span class="en">For their wedding in Mauritius, we created a pixel-art runner where Gustave crosses the island in his Ford Raptor to reach Caroline. Every element is custom-made.</span>
+    </p>
+    <div class="game-wrap rv rv-d3">
+      <div class="game-overlay" id="gameOverlay">
+        <div class="play-ring"></div>
+        <span><span class="fr">Cliquez pour jouer</span><span class="en">Click to play</span></span>
+      </div>
+      <iframe src="https://superkostia.github.io/gustave-caroline-mauritius-run/" loading="lazy" allow="autoplay" allowfullscreen title="Gustave &amp; Caroline: The Mauritius Run"></iframe>
+    </div>
+    <div class="demo-tags rv rv-d4">
+      <span class="demo-tag"><span class="fr">Décor : Île Maurice</span><span class="en">Setting: Mauritius</span></span>
+      <span class="demo-tag"><span class="fr">Véhicule : Ford Raptor</span><span class="en">Vehicle: Ford Raptor</span></span>
+      <span class="demo-tag"><span class="fr">Musique : Séga mauricien</span><span class="en">Music: Mauritian Sega</span></span>
+      <span class="demo-tag"><span class="fr">Personnages sur mesure</span><span class="en">Custom characters</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div class="ctn">
+    <div class="story-layout">
+      <div>
+        <div class="section-tag rv"><span class="fr">Notre histoire</span><span class="en">Our story</span></div>
+        <h2 class="rv rv-d1">
+          <span class="fr">Né à trois jours d'un mariage</span>
+          <span class="en">Born three days before a wedding</span>
+        </h2>
+        <div class="story-text rv rv-d2">
+          <span class="fr">
+            <p>On était à l'île Maurice, <em>à trois jours du mariage</em> de nos amis Caroline et Gustave. En discutant de comment surprendre les invités, l'idée est née : et si on créait un jeu vidéo à leur image ?</p>
+            <p>En quelques jours, le jeu était prêt. Gustave au volant de son Ford Raptor, traversant l'île pour rejoindre Caroline. Chaque détail pensé pour eux.</p>
+            <p>Le jour J, on a partagé le lien à tous les invités. Le résultat ? <em>Tout le monde a joué.</em> Entre les plats, dans la navette, pendant la soirée. Ça a créé un moment de partage incroyable, un sujet de conversation, de la compétition amicale, des fous rires.</p>
+            <p>C'est là qu'on a compris : chaque couple mérite son propre jeu.</p>
+          </span>
+          <span class="en">
+            <p>We were in Mauritius, <em>three days before</em> our friends Caroline and Gustave's wedding. While chatting about how to surprise the guests, the idea was born: what if we created a video game in their image?</p>
+            <p>Within days, the game was ready. Gustave behind the wheel of his Ford Raptor, crossing the island to reach Caroline. Every detail designed for them.</p>
+            <p>On the big day, we shared the link with every guest. The result? <em>Everyone played.</em> Between courses, in the shuttle, during the party. It created an incredible shared moment — conversation starters, friendly competition, laughter.</p>
+            <p>That's when we realized: every couple deserves their own game.</p>
+          </span>
+        </div>
+      </div>
+      <div class="story-visual rv rv-d3">
+        <div class="story-quote">
+          <span class="fr">&laquo; On ne s'attendait pas du tout à ça. Les invités ont adoré, certains ont joué toute la soirée ! &raquo;</span>
+          <span class="en">"We didn't expect this at all. The guests loved it — some played all evening long!"</span>
+        </div>
+        <p style="margin-top:1rem;font-size:0.9rem;color:var(--charcoal-light);font-style:italic">— Caroline &amp; Gustave</p>
+        <div class="story-stat">
+          <div><span class="num">100%</span><span class="lbl"><span class="fr">des invités ont joué</span><span class="en">of guests played</span></span></div>
+          <div><span class="num">45s</span><span class="lbl"><span class="fr">par partie</span><span class="en">per round</span></span></div>
+          <div><span class="num">3</span><span class="lbl"><span class="fr">biomes à traverser</span><span class="en">biomes to cross</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOMIZATION -->
+<section id="customize">
+  <div class="ctn" style="text-align:center">
+    <div class="section-tag rv"><span class="fr">Personnalisation</span><span class="en">Customization</span></div>
+    <h2 class="rv rv-d1">
+      <span class="fr">Tout est personnalisable</span>
+      <span class="en">Everything is customizable</span>
+    </h2>
+    <p class="section-sub rv rv-d2" style="margin:0 auto">
+      <span class="fr">Votre jeu est créé sur mesure. Aucun template, aucun copier-coller : chaque élément reflète votre histoire.</span>
+      <span class="en">Your game is custom-built. No templates, no copy-paste: every element reflects your story.</span>
+    </p>
+    <div class="custom-grid">
+      <div class="custom-card c1 rv">
+        <h3><span class="fr">Destination &amp; Décor</span><span class="en">Destination &amp; Setting</span></h3>
+        <p><span class="fr">Île Maurice, Toscane, Paris, Santorini… Le décor du jeu reflète votre lieu de mariage ou votre histoire.</span><span class="en">Mauritius, Tuscany, Paris, Santorini… The game setting reflects your wedding venue or your story.</span></p>
+      </div>
+      <div class="custom-card c2 rv rv-d1">
+        <h3><span class="fr">Véhicule &amp; Transport</span><span class="en">Vehicle &amp; Transport</span></h3>
+        <p><span class="fr">Voiture de collection, vélo tandem, cheval, scooter… Comment le marié rejoint-il l'autel ?</span><span class="en">Classic car, tandem bike, horse, scooter… How does the groom reach the altar?</span></p>
+      </div>
+      <div class="custom-card c3 rv rv-d2">
+        <h3><span class="fr">Personnages</span><span class="en">Characters</span></h3>
+        <p><span class="fr">Les personnages vous ressemblent : tenue, coiffure, style. En pixel-art, bien sûr.</span><span class="en">The characters look like you: outfit, hairstyle, style. In pixel art, of course.</span></p>
+      </div>
+      <div class="custom-card c4 rv rv-d3">
+        <h3><span class="fr">Musique &amp; Sons</span><span class="en">Music &amp; Sounds</span></h3>
+        <p><span class="fr">Une bande-son unique, synthétisée en pixel-art sonore. Du séga au jazz manouche, tout est possible.</span><span class="en">A unique soundtrack, synthesized in sonic pixel art. From sega to gypsy jazz, anything goes.</span></p>
+      </div>
+      <div class="custom-card c5 rv rv-d4">
+        <h3><span class="fr">Obstacles &amp; Défis</span><span class="en">Obstacles &amp; Challenges</span></h3>
+        <p><span class="fr">Des clins d'œil à votre histoire : vos inside jokes deviennent les obstacles du jeu.</span><span class="en">Nods to your story: your inside jokes become the game's obstacles.</span></p>
+      </div>
+      <div class="custom-card c6 rv rv-d5">
+        <h3><span class="fr">Objets à collecter</span><span class="en">Collectibles</span></h3>
+        <p><span class="fr">Cœurs, alliances, objets symboliques… Chaque collectible raconte un peu de votre couple.</span><span class="en">Hearts, rings, symbolic items… Every collectible tells part of your story.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="ctn" style="text-align:center">
+    <div class="section-tag rv"><span class="fr">Comment ça marche</span><span class="en">How it works</span></div>
+    <h2 class="rv rv-d1">
+      <span class="fr">Trois étapes, zéro stress</span>
+      <span class="en">Three steps, zero stress</span>
+    </h2>
+    <div class="steps">
+      <div class="step rv">
+        <div class="step-num">01</div>
+        <h3><span class="fr">Racontez-nous votre histoire</span><span class="en">Tell us your story</span></h3>
+        <p><span class="fr">Remplissez le formulaire : lieu, passions, véhicule, inside jokes. On s'occupe du reste.</span><span class="en">Fill out the form: venue, passions, vehicle, inside jokes. We'll handle the rest.</span></p>
+      </div>
+      <div class="step rv rv-d1">
+        <div class="step-num">02</div>
+        <h3><span class="fr">On crée votre jeu</span><span class="en">We create your game</span></h3>
+        <p><span class="fr">En 3 à 4 jours, votre jeu prend vie. Vous validez une version de prévisualisation avant la livraison finale.</span><span class="en">In 3 to 4 days, your game comes to life. You approve a preview version before final delivery.</span></p>
+      </div>
+      <div class="step rv rv-d2">
+        <div class="step-num">03</div>
+        <h3><span class="fr">Partagez avec vos invités</span><span class="en">Share with your guests</span></h3>
+        <p><span class="fr">Un QR code sur vos faire-part, un lien sur votre site de mariage. Vos invités jouent directement, sans rien installer.</span><span class="en">A QR code on your invitations, a link on your wedding website. Guests play directly — no download needed.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="ctn" style="text-align:center">
+    <div class="section-tag rv"><span class="fr">Tarif</span><span class="en">Pricing</span></div>
+    <h2 class="rv rv-d1">
+      <span class="fr">Un prix simple et transparent</span>
+      <span class="en">Simple, transparent pricing</span>
+    </h2>
+    <p class="section-sub rv rv-d2" style="margin:0 auto">
+      <span class="fr">Pas de forfaits compliqués. Un prix de base, et vous ajoutez des niveaux selon vos envies.</span>
+      <span class="en">No complicated plans. One base price, and you add levels as you like.</span>
+    </p>
+    <div class="price-box rv rv-d3">
+      <div class="price-main">
+        <div class="price-left">
+          <div class="price-amount">699&euro; <small>TTC</small></div>
+          <p class="price-subtitle"><span class="fr">Le jeu sur mesure, 1 niveau</span><span class="en">Custom game, 1 level</span></p>
+        </div>
+        <div class="price-right">
+          <ul class="price-includes">
+            <li><span class="fr">Jeu runner personnalisé</span><span class="en">Custom runner game</span></li>
+            <li><span class="fr">Personnages à votre image</span><span class="en">Characters in your likeness</span></li>
+            <li><span class="fr">Décor de votre lieu de mariage</span><span class="en">Your wedding venue as backdrop</span></li>
+            <li><span class="fr">Musique &amp; sons sur mesure</span><span class="en">Custom music &amp; sounds</span></li>
+            <li><span class="fr">Compatible tous appareils</span><span class="en">Works on all devices</span></li>
+            <li><span class="fr">Lien web + QR code</span><span class="en">Web link + QR code</span></li>
+            <li><span class="fr">Hébergement 1 an inclus</span><span class="en">1 year hosting included</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="price-extra">
+        <span class="price-extra-text"><span class="fr">Envie de plus ? <strong>+100&euro;</strong> par niveau supplémentaire</span><span class="en">Want more? <strong>+&euro;100</strong> per additional level</span></span>
+        <a href="#configurator" class="btn btn-coral btn-sm"><span class="fr">Configurer mon jeu</span><span class="en">Configure my game</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONFIGURATOR FORM -->
+<section id="configurator">
+  <div class="ctn" style="text-align:center">
+    <div class="section-tag rv"><span class="fr">Votre jeu</span><span class="en">Your game</span></div>
+    <h2 class="rv rv-d1">
+      <span class="fr">Configurez votre jeu</span>
+      <span class="en">Configure your game</span>
+    </h2>
+    <p class="section-sub rv rv-d2" style="margin:0 auto">
+      <span class="fr">Remplissez ce formulaire et recevez une proposition personnalisée sous 48h.</span>
+      <span class="en">Fill out this form and receive a personalized proposal within 48 hours.</span>
+    </p>
+    <form class="form-box rv rv-d3" id="configForm">
+      <div class="form-grid">
+        <div class="form-group">
+          <label><span class="fr">Prénom du marié</span><span class="en">Groom's first name</span></label>
+          <input type="text" name="groom" required>
+        </div>
+        <div class="form-group">
+          <label><span class="fr">Prénom de la mariée</span><span class="en">Bride's first name</span></label>
+          <input type="text" name="bride" required>
+        </div>
+        <div class="form-group">
+          <label><span class="fr">Date du mariage</span><span class="en">Wedding date</span></label>
+          <input type="date" name="date" required>
+        </div>
+        <div class="form-group">
+          <label><span class="fr">Lieu du mariage</span><span class="en">Wedding venue / location</span></label>
+          <input type="text" name="location" required>
+        </div>
+        <div class="form-group">
+          <label><span class="fr">Nombre de niveaux</span><span class="en">Number of levels</span></label>
+          <select name="levels" id="levelSelect">
+            <option value="1">1 niveau — 699&euro;</option>
+            <option value="2">2 niveaux — 799&euro;</option>
+            <option value="3">3 niveaux — 899&euro;</option>
+            <option value="4">4 niveaux — 999&euro;</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label><span class="fr">Votre email</span><span class="en">Your email</span></label>
+          <input type="email" name="email" required>
+        </div>
+        <div class="form-group full">
+          <label><span class="fr">Racontez-nous votre histoire</span><span class="en">Tell us your story</span></label>
+          <textarea name="story" rows="4"></textarea>
+        </div>
+        <div class="form-group full">
+          <label><span class="fr">Détails fun à intégrer au jeu</span><span class="en">Fun details to include in the game</span></label>
+          <textarea name="details" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="form-submit">
+        <button type="submit" class="btn btn-primary"><span class="fr">Envoyer ma configuration</span><span class="en">Send my configuration</span></button>
+        <p class="form-note"><span class="fr">Réponse sous 48h. Aucun engagement, aucun paiement à cette étape.</span><span class="en">Response within 48h. No commitment, no payment at this stage.</span></p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="ctn" style="text-align:center">
+    <div class="section-tag rv"><span class="fr">Questions</span><span class="en">FAQ</span></div>
+    <h2 class="rv rv-d1">
+      <span class="fr">Questions fréquentes</span>
+      <span class="en">Frequently asked questions</span>
+    </h2>
+    <div class="faq-list" style="text-align:left">
+      <div class="faq-item rv">
+        <button class="faq-q"><span class="fr">Combien de temps prend la création d'un jeu ?</span><span class="en">How long does it take to create a game?</span></button>
+        <div class="faq-a"><p><span class="fr">3 à 4 jours en moyenne. On recommande de nous contacter au moins 2 semaines avant le mariage pour être serein.</span><span class="en">3 to 4 days on average. We recommend reaching out at least 2 weeks before the wedding for peace of mind.</span></p></div>
+      </div>
+      <div class="faq-item rv rv-d1">
+        <button class="faq-q"><span class="fr">Le jeu fonctionne sur quels appareils ?</span><span class="en">What devices does the game work on?</span></button>
+        <div class="faq-a"><p><span class="fr">Sur tous les navigateurs modernes : smartphone, tablette, ordinateur. Aucune application à installer — vos invités cliquent sur un lien ou scannent un QR code et c'est parti.</span><span class="en">On all modern browsers: smartphone, tablet, computer. No app to install — your guests click a link or scan a QR code and they're playing.</span></p></div>
+      </div>
+      <div class="faq-item rv rv-d2">
+        <button class="faq-q"><span class="fr">Peut-on tester le jeu avant le jour J ?</span><span class="en">Can we test the game before the big day?</span></button>
+        <div class="faq-a"><p><span class="fr">Bien sûr ! Vous recevez une version de prévisualisation pour valider les personnalisations. On fait les ajustements ensemble avant la livraison finale.</span><span class="en">Of course! You'll receive a preview version to validate all customizations. We make adjustments together before the final delivery.</span></p></div>
+      </div>
+      <div class="faq-item rv rv-d3">
+        <button class="faq-q"><span class="fr">Le jeu reste accessible après le mariage ?</span><span class="en">Does the game stay online after the wedding?</span></button>
+        <div class="faq-a"><p><span class="fr">Oui, votre jeu est hébergé gratuitement pendant 1 an. C'est un souvenir que vos invités peuvent rejouer quand ils veulent.</span><span class="en">Yes, your game is hosted for free for 1 year. It's a memory your guests can replay whenever they want.</span></p></div>
+      </div>
+      <div class="faq-item rv rv-d4">
+        <button class="faq-q"><span class="fr">Comment distribuez-vous le jeu aux invités ?</span><span class="en">How do you distribute the game to guests?</span></button>
+        <div class="faq-a"><p><span class="fr">On vous fournit un lien web et un QR code haute résolution. Vous pouvez les intégrer à vos faire-part, votre site de mariage, ou les afficher le jour J. Pas d'appli à télécharger.</span><span class="en">We provide you with a web link and a high-res QR code. You can add them to your invitations, your wedding website, or display them on the day. No app to download.</span></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ctn">
+    <a href="#" class="logo"><svg class="logo-heart" viewBox="0 0 7 6" shape-rendering="crispEdges" fill="var(--coral)"><use href="#ph"/></svg><span class="logo-my">My</span><span class="logo-wed">Wed</span><span class="logo-game">Game</span></a>
+    <p>&copy; 2026 MyWedGame. <span class="fr">Tous droits réservés.</span><span class="en">All rights reserved.</span></p>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var saved = localStorage.getItem('mwg-lang');
+  var param = new URLSearchParams(location.search).get('lang');
+  var lang = param || saved || 'fr';
+  if (lang === 'en') document.documentElement.lang = 'en';
+
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    if (btn.dataset.lang === document.documentElement.lang) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+    btn.addEventListener('click', function() {
+      var l = btn.dataset.lang;
+      document.documentElement.lang = l;
+      localStorage.setItem('mwg-lang', l);
+      document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.toggle('active', b.dataset.lang === l); });
+      document.querySelector('.nav').classList.remove('open');
+    });
+  });
+
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  document.querySelector('.menu-toggle').addEventListener('click', function() {
+    nav.classList.toggle('open');
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+        nav.classList.remove('open');
+      }
+    });
+  });
+
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.rv').forEach(function(el) { obs.observe(el); });
+
+  document.getElementById('gameOverlay').addEventListener('click', function() {
+    this.classList.add('hidden');
+  });
+
+  document.querySelectorAll('.faq-q').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.faq-item');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(i) { i.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  var form = document.getElementById('configForm');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var d = new FormData(form);
+    var lang = document.documentElement.lang;
+    var subject = lang === 'fr' ? 'Nouveau jeu MyWedGame' : 'New MyWedGame request';
+    var body = '';
+    body += (lang === 'fr' ? 'Marié : ' : 'Groom: ') + d.get('groom') + '\n';
+    body += (lang === 'fr' ? 'Mariée : ' : 'Bride: ') + d.get('bride') + '\n';
+    body += (lang === 'fr' ? 'Date : ' : 'Date: ') + d.get('date') + '\n';
+    body += (lang === 'fr' ? 'Lieu : ' : 'Location: ') + d.get('location') + '\n';
+    body += (lang === 'fr' ? 'Niveaux : ' : 'Levels: ') + d.get('levels') + '\n';
+    body += (lang === 'fr' ? 'Email : ' : 'Email: ') + d.get('email') + '\n\n';
+    body += (lang === 'fr' ? 'Histoire :\n' : 'Story:\n') + d.get('story') + '\n\n';
+    body += (lang === 'fr' ? 'Détails fun :\n' : 'Fun details:\n') + d.get('details');
+    window.location.href = 'mailto:hello@mywedgame.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  });
+
+  var placeholders = {
+    fr: {
+      location: 'ex : Château de Versailles, Île Maurice…',
+      story: 'Comment vous êtes-vous rencontrés ? Une anecdote marquante ? Un trait de caractère à mettre en avant ?',
+      details: 'Véhicule préféré, inside jokes, animal de compagnie, passion commune…'
+    },
+    en: {
+      location: 'e.g. Castle in Tuscany, Mauritius…',
+      story: 'How did you meet? A memorable anecdote? A character trait to highlight?',
+      details: 'Favorite vehicle, inside jokes, pet, shared passion…'
+    }
+  };
+  function updatePlaceholders() {
+    var l = document.documentElement.lang === 'en' ? 'en' : 'fr';
+    form.querySelector('[name="location"]').placeholder = placeholders[l].location;
+    form.querySelector('[name="story"]').placeholder = placeholders[l].story;
+    form.querySelector('[name="details"]').placeholder = placeholders[l].details;
+  }
+  updatePlaceholders();
+  new MutationObserver(updatePlaceholders).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+})();
+</script>
+</body>
+</html>
