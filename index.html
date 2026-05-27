@@ -700,23 +700,36 @@
     if (checked.length > maxColl) { e.target.checked = false; }
   });
 
+  var submitBtn = form.querySelector('button[type="submit"]');
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     var d = new FormData(form);
     var lang = document.documentElement.lang;
-    var collectibles = d.getAll('collectibles').join(', ') || (lang === 'fr' ? 'non choisi' : 'not chosen');
-    var subject = lang === 'fr' ? 'Nouveau jeu MyWedGame' : 'New MyWedGame request';
-    var body = '';
-    body += (lang === 'fr' ? 'Marié : ' : 'Groom: ') + d.get('groom') + '\n';
-    body += (lang === 'fr' ? 'Mariée : ' : 'Bride: ') + d.get('bride') + '\n';
-    body += (lang === 'fr' ? 'Date : ' : 'Date: ') + d.get('date') + '\n';
-    body += (lang === 'fr' ? 'Lieu : ' : 'Location: ') + d.get('location') + '\n';
-    body += (lang === 'fr' ? 'Niveaux : ' : 'Levels: ') + d.get('levels') + '\n';
-    body += (lang === 'fr' ? 'Collectibles : ' : 'Collectibles: ') + collectibles + '\n';
-    body += (lang === 'fr' ? 'Email : ' : 'Email: ') + d.get('email') + '\n\n';
-    body += (lang === 'fr' ? 'Histoire :\n' : 'Story:\n') + d.get('story') + '\n\n';
-    body += (lang === 'fr' ? 'Détails fun :\n' : 'Fun details:\n') + d.get('details');
-    window.location.href = 'mailto:hello@mywedgame.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = lang === 'fr' ? 'Envoi en cours…' : 'Sending…';
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        groom: d.get('groom'),
+        bride: d.get('bride'),
+        date: d.get('date'),
+        location: d.get('location'),
+        levels: d.get('levels'),
+        collectibles: d.getAll('collectibles'),
+        email: d.get('email'),
+        story: d.get('story'),
+        details: d.get('details')
+      })
+    }).then(function(r) {
+      if (r.ok) {
+        form.innerHTML = '<div style="text-align:center;padding:3rem 0"><h3 style="font-family:Terminal Grotesque,sans-serif;font-size:1.5rem;text-transform:uppercase;margin-bottom:1rem">' + (lang === 'fr' ? 'Demande envoyée !' : 'Request sent!') + '</h3><p style="color:var(--charcoal-light)">' + (lang === 'fr' ? 'On revient vers vous sous 48h.' : 'We\'ll get back to you within 48h.') + '</p></div>';
+      } else { throw new Error(); }
+    }).catch(function() {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<span class="fr">Envoyer ma configuration</span><span class="en">Send my configuration</span>';
+      alert(lang === 'fr' ? 'Erreur d\'envoi. Réessayez ou écrivez à hello@mywedgame.com' : 'Send error. Please retry or email hello@mywedgame.com');
+    });
   });
 
   var placeholders = {
