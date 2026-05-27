@@ -15,6 +15,7 @@
   <style>
     @font-face { font-family: 'Apfel Grotezk'; src: url('fonts/ApfelGrotezk-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
     @font-face { font-family: 'Apfel Grotezk'; src: url('fonts/ApfelGrotezk-Fett.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Terminal Grotesque'; src: url('fonts/terminal-grotesque-webfont.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
 
     :root {
       --cream: #FAF7F2;
@@ -71,7 +72,7 @@
     .nav-inner { display: flex; align-items: center; justify-content: space-between; }
     .logo { text-decoration: none; font-family: 'Apfel Grotezk', sans-serif; font-size: 1.4rem; font-weight: 700; letter-spacing: -0.03em; display: inline-flex; align-items: center; gap: 0.5rem; color: var(--charcoal); }
     .logo-heart { width: 28px; height: 24px; flex-shrink: 0; }
-    .logo-wed { color: var(--coral); }
+    .logo-wed { font-family: 'Terminal Grotesque', sans-serif; font-weight: 400; color: var(--coral); text-transform: uppercase; font-size: 0.85em; letter-spacing: 0.02em; }
     .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
     .nav-links a { text-decoration: none; color: var(--charcoal); font-size: 0.9rem; font-weight: 500; position: relative; }
     .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px; background: var(--coral); transition: width 0.3s; }
@@ -118,6 +119,8 @@
     .game-overlay:hover .play-ring { background: var(--coral); border-color: var(--coral); transform: scale(1.1); }
     .play-ring::after { content: ''; border-style: solid; border-width: 10px 0 10px 18px; border-color: transparent transparent transparent var(--cream); margin-left: 4px; }
     .game-overlay span { font-size: 0.9rem; color: rgba(250,247,242,0.6); }
+    .game-hint { text-align: right; max-width: 900px; margin: 0.75rem auto 0; font-size: 0.82rem; color: rgba(250,247,242,0.45); }
+    .game-hint kbd { display: inline-block; background: var(--dark-card); border: 1px solid rgba(250,247,242,0.15); border-radius: 4px; padding: 0.1rem 0.4rem; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; color: rgba(250,247,242,0.6); }
     .demo-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 2rem; }
     .demo-tag { background: var(--dark-card); color: var(--gold-light); padding: 0.5rem 1.15rem; border-radius: 100px; font-size: 0.82rem; font-weight: 500; border: 1px solid rgba(201,169,110,0.15); }
 
@@ -310,6 +313,7 @@
       </div>
       <iframe src="https://superkostia.github.io/gustave-caroline-mauritius-run/" loading="lazy" allow="autoplay" allowfullscreen title="Gustave &amp; Caroline: The Mauritius Run"></iframe>
     </div>
+    <p class="game-hint rv rv-d4"><span class="fr">Appuyez sur <kbd>M</kbd> pour couper le son dans le jeu</span><span class="en">Press <kbd>M</kbd> to mute the game sound</span></p>
     <div class="demo-tags rv rv-d4">
       <span class="demo-tag"><span class="fr">Décor : Île Maurice</span><span class="en">Setting: Mauritius</span></span>
       <span class="demo-tag"><span class="fr">Véhicule : Ford Raptor</span><span class="en">Vehicle: Ford Raptor</span></span>
