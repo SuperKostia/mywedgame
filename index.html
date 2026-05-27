@@ -72,7 +72,8 @@
     .nav-inner { display: flex; align-items: center; justify-content: space-between; }
     .logo { text-decoration: none; font-family: 'Apfel Grotezk', sans-serif; font-size: 1.4rem; font-weight: 700; letter-spacing: -0.03em; display: inline-flex; align-items: center; gap: 0.5rem; color: var(--charcoal); }
     .logo-heart { width: 28px; height: 24px; flex-shrink: 0; }
-    .logo-wed { font-family: 'Terminal Grotesque', sans-serif; font-weight: 400; color: var(--coral); text-transform: uppercase; font-size: 0.85em; letter-spacing: 0.02em; }
+    .logo-text { display: inline-flex; align-items: baseline; }
+    .logo-wed { font-family: 'Terminal Grotesque', sans-serif; font-weight: 400; color: var(--coral); text-transform: uppercase; font-size: 1.3em; letter-spacing: 0.01em; -webkit-text-stroke: 0.5px var(--coral); }
     .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
     .nav-links a { text-decoration: none; color: var(--charcoal); font-size: 0.9rem; font-weight: 500; position: relative; }
     .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px; background: var(--coral); transition: width 0.3s; }
@@ -244,7 +245,7 @@
 <!-- NAV -->
 <nav class="nav" id="nav">
   <div class="ctn nav-inner">
-    <a href="#" class="logo"><svg class="logo-heart" viewBox="0 0 7 6" shape-rendering="crispEdges" fill="var(--coral)"><use href="#ph"/></svg><span class="logo-my">My</span><span class="logo-wed">Wed</span><span class="logo-game">Game</span></a>
+    <a href="#" class="logo"><svg class="logo-heart" viewBox="0 0 7 6" shape-rendering="crispEdges" fill="var(--coral)"><use href="#ph"/></svg><span class="logo-text"><span class="logo-my">My</span><span class="logo-wed">Wed</span><span class="logo-game">Game</span></span></a>
     <ul class="nav-links">
       <li><a href="#demo"><span class="fr">Exemple</span><span class="en">Demo</span></a></li>
       <li><a href="#story"><span class="fr">Notre histoire</span><span class="en">Our story</span></a></li>
@@ -567,7 +568,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="ctn">
-    <a href="#" class="logo"><svg class="logo-heart" viewBox="0 0 7 6" shape-rendering="crispEdges" fill="var(--coral)"><use href="#ph"/></svg><span class="logo-my">My</span><span class="logo-wed">Wed</span><span class="logo-game">Game</span></a>
+    <a href="#" class="logo"><svg class="logo-heart" viewBox="0 0 7 6" shape-rendering="crispEdges" fill="var(--coral)"><use href="#ph"/></svg><span class="logo-text"><span class="logo-my">My</span><span class="logo-wed">Wed</span><span class="logo-game">Game</span></span></a>
     <p>&copy; 2026 MyWedGame. <span class="fr">Tous droits réservés.</span><span class="en">All rights reserved.</span></p>
   </div>
 </footer>
