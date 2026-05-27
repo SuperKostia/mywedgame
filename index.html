@@ -97,9 +97,11 @@
     .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px; background: var(--coral); transition: width 0.3s; }
     .nav-links a:hover::after { width: 100%; }
     .nav-right { display: flex; align-items: center; gap: 1.25rem; }
-    .lang-toggle { display: flex; border: 1.5px solid var(--charcoal); border-radius: 100px; overflow: hidden; }
-    .lang-btn { padding: 0.35rem 0.85rem; font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; cursor: pointer; background: none; border: none; color: var(--charcoal); transition: all 0.3s; }
-    .lang-btn.active { background: var(--charcoal); color: var(--cream); }
+    .lang-toggle { display: flex; border: 3px solid var(--charcoal); overflow: hidden; }
+    .lang-btn { padding: 0.3rem 0.7rem; font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; background: none; border: none; border-right: 2px solid var(--charcoal); color: var(--charcoal); transition: all 0.15s; }
+    .lang-btn:last-child { border-right: none; }
+    .lang-btn.active { background: var(--coral); color: white; }
+    .lang-btn:not(.active):hover { background: var(--cream-dark); }
     .menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
     .menu-toggle span { display: block; width: 22px; height: 2px; background: var(--charcoal); border-radius: 2px; transition: all 0.3s; transform-origin: center; }
     .nav.open .menu-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
