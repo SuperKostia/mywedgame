@@ -79,7 +79,14 @@
     .nav.scrolled { background: rgba(250,247,242,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 0.75rem 0; box-shadow: 0 1px 0 rgba(0,0,0,0.06); }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; }
     .logo { text-decoration: none; font-family: 'Apfel Grotezk', sans-serif; font-size: 1.4rem; font-weight: 700; letter-spacing: -0.03em; display: inline-flex; align-items: center; gap: 0.5rem; color: var(--charcoal); }
-    .logo-heart { width: 28px; height: 24px; flex-shrink: 0; }
+    .logo-heart { width: 28px; height: 24px; flex-shrink: 0; animation: heartPulse 10s ease infinite; }
+    @keyframes heartPulse {
+      0%, 100% { fill: #D4736C; }
+      20% { fill: #C9A96E; }
+      40% { fill: #7BAE8E; }
+      60% { fill: #8B9DC3; }
+      80% { fill: #D4A0A0; }
+    }
     .logo-text { display: inline-flex; align-items: baseline; }
     .logo-wed { font-family: 'Terminal Grotesque', sans-serif; font-weight: 400; color: var(--coral); text-transform: uppercase; font-size: 1.3em; letter-spacing: 0.01em; -webkit-text-stroke: 0.5px var(--coral); }
     .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
@@ -724,6 +731,15 @@
   }
   updatePlaceholders();
   new MutationObserver(updatePlaceholders).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+
+  var favColors = ['%23D4736C','%23C9A96E','%237BAE8E','%238B9DC3','%23D4A0A0'];
+  var favIdx = 0;
+  setInterval(function() {
+    favIdx = (favIdx + 1) % favColors.length;
+    var c = favColors[favIdx];
+    var svg = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 6' shape-rendering='crispEdges'><rect fill='" + c + "' x='1' y='0' width='2' height='1'/><rect fill='" + c + "' x='4' y='0' width='2' height='1'/><rect fill='" + c + "' x='0' y='1' width='7' height='2'/><rect fill='" + c + "' x='1' y='3' width='5' height='1'/><rect fill='" + c + "' x='2' y='4' width='3' height='1'/><rect fill='" + c + "' x='3' y='5' width='1' height='1'/></svg>";
+    document.querySelector('link[rel="icon"]').href = 'data:image/svg+xml,' + svg;
+  }, 2000);
 })();
 </script>
 </body>
