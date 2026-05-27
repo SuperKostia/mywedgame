@@ -11,7 +11,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 6' shape-rendering='crispEdges'><rect fill='%23D4736C' x='1' y='0' width='2' height='1'/><rect fill='%23D4736C' x='4' y='0' width='2' height='1'/><rect fill='%23D4736C' x='0' y='1' width='7' height='2'/><rect fill='%23D4736C' x='1' y='3' width='5' height='1'/><rect fill='%23D4736C' x='2' y='4' width='3' height='1'/><rect fill='%23D4736C' x='3' y='5' width='1' height='1'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
   <style>
     @font-face { font-family: 'Apfel Grotezk'; src: url('fonts/ApfelGrotezk-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
     @font-face { font-family: 'Apfel Grotezk'; src: url('fonts/ApfelGrotezk-Fett.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
@@ -50,7 +50,7 @@
     .ctn { max-width: 1100px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 3rem); }
     section { padding: clamp(4rem, 8vw, 7rem) 0; }
 
-    h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.2; margin-bottom: 1rem; }
+    h2 { font-family: 'Terminal Grotesque', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; line-height: 1.2; margin-bottom: 1rem; text-transform: uppercase; }
     .section-tag { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--coral); margin-bottom: 1rem; }
     .section-tag::before { content: ''; width: 8px; height: 8px; background: var(--coral); transform: rotate(45deg); }
     .section-sub { font-size: clamp(1rem, 1.5vw, 1.15rem); color: var(--charcoal-light); max-width: 600px; line-height: 1.7; }
@@ -91,8 +91,8 @@
     /* HERO */
     .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; padding-top: 80px; }
     .hero-content { position: relative; z-index: 2; }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4.2rem); font-weight: 700; line-height: 1.15; color: var(--charcoal); max-width: 780px; margin: 0 auto 1.5rem; }
-    .hero h1 em { font-style: italic; color: var(--coral); }
+    .hero h1 { font-family: 'Terminal Grotesque', sans-serif; font-size: clamp(2.5rem, 6vw, 4.2rem); font-weight: 400; line-height: 1.15; color: var(--charcoal); max-width: 780px; margin: 0 auto 1.5rem; text-transform: uppercase; }
+    .hero h1 em { font-style: normal; color: var(--coral); }
     .hero-sub { font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--charcoal-light); max-width: 540px; margin: 0 auto 2.5rem; line-height: 1.7; }
     .hero-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
     .hero-price { margin-top: 1.5rem; font-size: 0.9rem; color: var(--charcoal-light); }
@@ -132,10 +132,10 @@
     .story-text p + p { margin-top: 1rem; }
     .story-text em { color: var(--coral); font-style: normal; font-weight: 600; }
     .story-visual { background: var(--cream-dark); border-radius: 16px; padding: clamp(2rem, 4vw, 3rem); position: relative; overflow: hidden; }
-    .story-quote { font-family: 'Playfair Display', serif; font-size: clamp(1.25rem, 2.5vw, 1.6rem); font-style: italic; color: var(--charcoal); line-height: 1.5; position: relative; padding-left: 1.5rem; border-left: 3px solid var(--coral); }
+    .story-quote { font-family: 'Apfel Grotezk', sans-serif; font-size: clamp(1.25rem, 2.5vw, 1.6rem); font-style: italic; color: var(--charcoal); line-height: 1.5; position: relative; padding-left: 1.5rem; border-left: 3px solid var(--coral); }
     .story-stat { display: flex; gap: 2rem; margin-top: 2rem; }
     .story-stat div { text-align: center; }
-    .story-stat .num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--coral); display: block; }
+    .story-stat .num { font-family: 'Terminal Grotesque', sans-serif; font-size: 2rem; font-weight: 400; color: var(--coral); display: block; }
     .story-stat .lbl { font-size: 0.8rem; color: var(--charcoal-light); text-transform: uppercase; letter-spacing: 0.1em; }
 
     /* CUSTOMIZE */
@@ -144,7 +144,7 @@
     .custom-card { background: white; padding: 2rem 1.75rem; border-radius: 12px; position: relative; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
     .custom-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
     .custom-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent, var(--coral)); }
-    .custom-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 0.5rem; }
+    .custom-card h3 { font-family: 'Terminal Grotesque', sans-serif; font-size: 1.15rem; font-weight: 400; margin-bottom: 0.5rem; text-transform: uppercase; }
     .custom-card p { font-size: 0.92rem; color: var(--charcoal-light); line-height: 1.6; }
     .c1 { --accent: #D4736C; } .c2 { --accent: #7BAE8E; } .c3 { --accent: #C9A96E; }
     .c4 { --accent: #8B9DC3; } .c5 { --accent: #D4A0A0; } .c6 { --accent: #B8A090; }
@@ -153,7 +153,7 @@
     #process { background: var(--cream); }
     .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2.5rem; }
     .step { text-align: center; }
-    .step-num { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 5vw, 4rem); font-weight: 700; color: var(--coral-light); line-height: 1; margin-bottom: 0.75rem; }
+    .step-num { font-family: 'Terminal Grotesque', sans-serif; font-size: clamp(3rem, 5vw, 4rem); font-weight: 400; color: var(--coral-light); line-height: 1; margin-bottom: 0.75rem; }
     .step h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
     .step p { font-size: 0.92rem; color: var(--charcoal-light); line-height: 1.6; max-width: 300px; margin: 0 auto; }
 
@@ -162,7 +162,7 @@
     .price-box { max-width: 700px; margin: 2.5rem auto 0; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
     .price-main { padding: clamp(2rem, 5vw, 3rem); display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
     .price-left { flex: 1; min-width: 240px; }
-    .price-amount { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 700; color: var(--charcoal); line-height: 1; }
+    .price-amount { font-family: 'Terminal Grotesque', sans-serif; font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 400; color: var(--charcoal); line-height: 1; }
     .price-amount small { font-size: 0.45em; font-weight: 400; color: var(--charcoal-light); vertical-align: baseline; }
     .price-subtitle { font-size: 1.05rem; color: var(--charcoal-light); margin-top: 0.5rem; }
     .price-right { flex: 1; min-width: 240px; }
