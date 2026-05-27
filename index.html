@@ -13,6 +13,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <style>
+    @font-face { font-family: 'Apfel Grotezk'; src: url('fonts/ApfelGrotezk-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Apfel Grotezk'; src: url('fonts/ApfelGrotezk-Fett.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+
     :root {
       --cream: #FAF7F2;
       --cream-dark: #F0EBE3;
@@ -66,11 +69,9 @@
     .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 0; transition: padding 0.4s, background 0.4s, box-shadow 0.4s; }
     .nav.scrolled { background: rgba(250,247,242,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 0.75rem 0; box-shadow: 0 1px 0 rgba(0,0,0,0.06); }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; }
-    .logo { text-decoration: none; font-size: 1.35rem; letter-spacing: -0.02em; display: inline-flex; align-items: center; gap: 0.5rem; }
+    .logo { text-decoration: none; font-family: 'Apfel Grotezk', sans-serif; font-size: 1.4rem; font-weight: 700; letter-spacing: -0.03em; display: inline-flex; align-items: center; gap: 0.5rem; color: var(--charcoal); }
     .logo-heart { width: 28px; height: 24px; flex-shrink: 0; }
-    .logo-my { font-family: 'DM Sans', sans-serif; font-weight: 400; color: var(--charcoal); }
-    .logo-wed { font-family: 'Playfair Display', serif; font-style: italic; color: var(--coral); }
-    .logo-game { font-family: 'DM Sans', sans-serif; font-weight: 700; color: var(--charcoal); }
+    .logo-wed { color: var(--coral); }
     .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
     .nav-links a { text-decoration: none; color: var(--charcoal); font-size: 0.9rem; font-weight: 500; position: relative; }
     .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px; background: var(--coral); transition: width 0.3s; }
