@@ -7,53 +7,53 @@
   @font-face { font-family: 'Terminal'; src: url('fonts/terminal-grotesque-webfont.woff2') format('woff2'); }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    width: 1200px; height: 630px; overflow: hidden;
+    width: 1200px; height: 1200px; overflow: hidden;
     background: #FAF7F2;
     display: flex; align-items: center; justify-content: center;
     position: relative;
     font-family: 'Apfel', sans-serif;
   }
+  .side-bar {
+    position: absolute; top: 0; left: 0; bottom: 0; width: 14px;
+    background: linear-gradient(180deg, #D4736C, #C9A96E);
+  }
   .content { text-align: center; z-index: 2; position: relative; }
   .logo-line {
     display: flex; align-items: center; justify-content: center; gap: 16px;
-    font-size: 64px; font-weight: 700; letter-spacing: -0.03em; color: #2A2724;
+    font-size: 88px; font-weight: 700; letter-spacing: -0.03em; color: #2A2724;
   }
-  .logo-wed { font-family: 'Terminal', sans-serif; font-weight: 400; color: #D4736C; text-transform: uppercase; font-size: 80px; letter-spacing: 0.01em; }
-  .heart svg { width: 64px; height: 55px; }
+  .logo-wed { font-family: 'Terminal', sans-serif; font-weight: 400; color: #D4736C; text-transform: uppercase; font-size: 110px; letter-spacing: 0.01em; }
+  .heart svg { width: 88px; height: 75px; }
   .tagline {
     font-family: 'Terminal', sans-serif;
-    font-size: 36px;
+    font-size: 48px;
     color: #2A2724;
     text-transform: uppercase;
-    margin-top: 28px;
+    margin-top: 40px;
     letter-spacing: 0.02em;
   }
   .tagline em { color: #D4736C; font-style: normal; }
   .price {
     font-family: 'Apfel', sans-serif;
-    font-size: 22px;
+    font-size: 28px;
     color: #5C5653;
-    margin-top: 16px;
+    margin-top: 24px;
   }
   .price strong { color: #D4736C; }
-  .bottom-bar {
-    position: absolute; bottom: 0; left: 0; right: 0; height: 8px;
-    background: linear-gradient(90deg, #D4736C, #C9A96E);
+  .collectibles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 64px;
+    justify-items: center;
   }
-  .hearts-bg {
-    position: absolute; inset: 0; pointer-events: none; opacity: 0.06;
-  }
-  .hearts-bg svg { position: absolute; }
+  .coll-item { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .coll-item svg { width: 96px; height: 82px; }
+  .coll-item span { font-size: 20px; color: #5C5653; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
 </style>
 </head>
 <body>
-  <div class="hearts-bg">
-    <svg viewBox="0 0 7 6" shape-rendering="crispEdges" fill="#D4736C" style="width:80px;height:69px;top:40px;left:60px"><rect x="1" y="0" width="2" height="1"/><rect x="4" y="0" width="2" height="1"/><rect x="0" y="1" width="7" height="2"/><rect x="1" y="3" width="5" height="1"/><rect x="2" y="4" width="3" height="1"/><rect x="3" y="5" width="1" height="1"/></svg>
-    <svg viewBox="0 0 7 6" shape-rendering="crispEdges" fill="#C9A96E" style="width:50px;height:43px;top:120px;right:100px"><rect x="1" y="0" width="2" height="1"/><rect x="4" y="0" width="2" height="1"/><rect x="0" y="1" width="7" height="2"/><rect x="1" y="3" width="5" height="1"/><rect x="2" y="4" width="3" height="1"/><rect x="3" y="5" width="1" height="1"/></svg>
-    <svg viewBox="0 0 7 6" shape-rendering="crispEdges" fill="#D4736C" style="width:60px;height:51px;bottom:60px;left:150px"><rect x="1" y="0" width="2" height="1"/><rect x="4" y="0" width="2" height="1"/><rect x="0" y="1" width="7" height="2"/><rect x="1" y="3" width="5" height="1"/><rect x="2" y="4" width="3" height="1"/><rect x="3" y="5" width="1" height="1"/></svg>
-    <svg viewBox="0 0 7 6" shape-rendering="crispEdges" fill="#D4736C" style="width:45px;height:39px;bottom:100px;right:80px"><rect x="1" y="0" width="2" height="1"/><rect x="4" y="0" width="2" height="1"/><rect x="0" y="1" width="7" height="2"/><rect x="1" y="3" width="5" height="1"/><rect x="2" y="4" width="3" height="1"/><rect x="3" y="5" width="1" height="1"/></svg>
-    <svg viewBox="0 0 7 6" shape-rendering="crispEdges" fill="#C9A96E" style="width:35px;height:30px;top:80px;left:900px"><rect x="1" y="0" width="2" height="1"/><rect x="4" y="0" width="2" height="1"/><rect x="0" y="1" width="7" height="2"/><rect x="1" y="3" width="5" height="1"/><rect x="2" y="4" width="3" height="1"/><rect x="3" y="5" width="1" height="1"/></svg>
-  </div>
+  <div class="side-bar"></div>
   <div class="content">
     <div class="logo-line">
       <span class="heart"><svg viewBox="0 0 7 6" shape-rendering="crispEdges" fill="#D4736C"><rect x="1" y="0" width="2" height="1"/><rect x="4" y="0" width="2" height="1"/><rect x="0" y="1" width="7" height="2"/><rect x="1" y="3" width="5" height="1"/><rect x="2" y="4" width="3" height="1"/><rect x="3" y="5" width="1" height="1"/></svg></span>
@@ -61,7 +61,24 @@
     </div>
     <div class="tagline">Un jeu vidéo sur mesure<br>pour <em>votre mariage</em></div>
     <div class="price">À partir de <strong>699 € TTC</strong></div>
+    <div class="collectibles">
+      <div class="coll-item">
+        <svg viewBox="0 0 7 6" shape-rendering="crispEdges"><rect fill="#E05A5A" x="1" y="0" width="2" height="1"/><rect fill="#E05A5A" x="4" y="0" width="2" height="1"/><rect fill="#F2A5A0" x="1" y="0" width="1" height="1"/><rect fill="#D4736C" x="0" y="1" width="7" height="1"/><rect fill="#E05A5A" x="1" y="1" width="1" height="1"/><rect fill="#D4736C" x="0" y="2" width="7" height="1"/><rect fill="#C4584A" x="1" y="3" width="5" height="1"/><rect fill="#B04030" x="2" y="4" width="3" height="1"/><rect fill="#8C3228" x="3" y="5" width="1" height="1"/></svg>
+        <span>Cœur</span>
+      </div>
+      <div class="coll-item">
+        <svg viewBox="0 0 7 7" shape-rendering="crispEdges"><rect fill="#C9A96E" x="2" y="0" width="3" height="1"/><rect fill="#E0F0FF" x="3" y="0" width="1" height="1"/><rect fill="#C9A96E" x="1" y="1" width="1" height="1"/><rect fill="#E8D5AD" x="2" y="1" width="3" height="1"/><rect fill="#C9A96E" x="5" y="1" width="1" height="1"/><rect fill="#C9A96E" x="0" y="2" width="1" height="3"/><rect fill="#C9A96E" x="6" y="2" width="1" height="3"/><rect fill="#E8D5AD" x="1" y="2" width="1" height="1"/><rect fill="#C9A96E" x="1" y="5" width="1" height="1"/><rect fill="#C9A96E" x="5" y="5" width="1" height="1"/><rect fill="#C9A96E" x="2" y="6" width="3" height="1"/></svg>
+        <span>Alliance</span>
+      </div>
+      <div class="coll-item">
+        <svg viewBox="0 0 7 7" shape-rendering="crispEdges"><rect fill="#F5D76E" x="3" y="0" width="1" height="1"/><rect fill="#E8C84A" x="2" y="1" width="1" height="1"/><rect fill="#FFE88A" x="3" y="1" width="1" height="1"/><rect fill="#E8C84A" x="4" y="1" width="1" height="1"/><rect fill="#C9A96E" x="0" y="2" width="2" height="1"/><rect fill="#F5D76E" x="2" y="2" width="1" height="1"/><rect fill="#FFE88A" x="3" y="2" width="1" height="1"/><rect fill="#F5D76E" x="4" y="2" width="1" height="1"/><rect fill="#C9A96E" x="5" y="2" width="2" height="1"/><rect fill="#E8C84A" x="1" y="3" width="1" height="1"/><rect fill="#FFE88A" x="2" y="3" width="3" height="1"/><rect fill="#E8C84A" x="5" y="3" width="1" height="1"/><rect fill="#F5D76E" x="2" y="4" width="3" height="1"/><rect fill="#E8C84A" x="1" y="5" width="1" height="1"/><rect fill="#F5D76E" x="2" y="5" width="1" height="1"/><rect fill="#F5D76E" x="4" y="5" width="1" height="1"/><rect fill="#E8C84A" x="5" y="5" width="1" height="1"/><rect fill="#C9A96E" x="0" y="6" width="1" height="1"/><rect fill="#C9A96E" x="6" y="6" width="1" height="1"/></svg>
+        <span>Étoile</span>
+      </div>
+      <div class="coll-item">
+        <svg viewBox="0 0 7 6" shape-rendering="crispEdges"><rect fill="#A8D8EA" x="2" y="0" width="3" height="1"/><rect fill="#88C8E8" x="1" y="1" width="1" height="1"/><rect fill="#E0F0FF" x="3" y="1" width="1" height="1"/><rect fill="#88C8E8" x="2" y="1" width="1" height="1"/><rect fill="#88C8E8" x="4" y="1" width="1" height="1"/><rect fill="#88C8E8" x="5" y="1" width="1" height="1"/><rect fill="#62B0D0" x="0" y="2" width="7" height="1"/><rect fill="#A8D8EA" x="2" y="2" width="1" height="1"/><rect fill="#E0F0FF" x="3" y="2" width="1" height="1"/><rect fill="#A8D8EA" x="4" y="2" width="1" height="1"/><rect fill="#88C8E8" x="1" y="3" width="5" height="1"/><rect fill="#A8D8EA" x="3" y="3" width="1" height="1"/><rect fill="#62B0D0" x="2" y="4" width="3" height="1"/><rect fill="#88C8E8" x="3" y="4" width="1" height="1"/><rect fill="#62B0D0" x="3" y="5" width="1" height="1"/></svg>
+        <span>Diamant</span>
+      </div>
+    </div>
   </div>
-  <div class="bottom-bar"></div>
 </body>
 </html>
