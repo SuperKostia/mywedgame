@@ -160,7 +160,9 @@
     .custom-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
     .custom-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent, var(--coral)); }
     .custom-card h3 { font-family: 'Terminal Grotesque', sans-serif; font-size: 1.15rem; font-weight: 400; margin-bottom: 0.5rem; text-transform: uppercase; }
-    .custom-card p { font-size: 0.92rem; color: var(--charcoal-light); line-height: 1.6; }
+    .custom-card p { font-size: 0.92rem; color: var(--charcoal-light); line-height: 1.6; position: relative; z-index: 1; }
+    .card-pixel { position: absolute; bottom: 12px; right: 12px; opacity: 0.1; pointer-events: none; transition: opacity 0.3s; }
+    .custom-card:hover .card-pixel { opacity: 0.25; }
     .c1 { --accent: #D4736C; } .c2 { --accent: #7BAE8E; } .c3 { --accent: #C9A96E; }
     .c4 { --accent: #8B9DC3; } .c5 { --accent: #D4A0A0; } .c6 { --accent: #B8A090; }
 
@@ -403,26 +405,32 @@
       <div class="custom-card c1 rv">
         <h3><span class="fr">Destination &amp; Décor</span><span class="en">Destination &amp; Setting</span></h3>
         <p><span class="fr">Île Maurice, Toscane, Paris, Santorini… Le décor du jeu reflète votre lieu de mariage ou votre histoire.</span><span class="en">Mauritius, Tuscany, Paris, Santorini… The game setting reflects your wedding venue or your story.</span></p>
+        <svg class="card-pixel" width="48" height="56" viewBox="0 0 6 7" shape-rendering="crispEdges"><rect fill="#7BAE8E" x="2" y="0" width="2" height="1"/><rect fill="#5C8C6E" x="1" y="1" width="1" height="1"/><rect fill="#7BAE8E" x="2" y="1" width="2" height="1"/><rect fill="#5C8C6E" x="4" y="1" width="1" height="1"/><rect fill="#7BAE8E" x="0" y="2" width="1" height="1"/><rect fill="#5C8C6E" x="1" y="2" width="1" height="1"/><rect fill="#7BAE8E" x="2" y="2" width="2" height="1"/><rect fill="#5C8C6E" x="4" y="2" width="1" height="1"/><rect fill="#7BAE8E" x="5" y="2" width="1" height="1"/><rect fill="#8B6914" x="2" y="3" width="2" height="1"/><rect fill="#8B6914" x="2" y="4" width="2" height="1"/><rect fill="#8B6914" x="2" y="5" width="2" height="1"/><rect fill="#6B4E0A" x="1" y="6" width="4" height="1"/></svg>
       </div>
       <div class="custom-card c2 rv rv-d1">
         <h3><span class="fr">Véhicule &amp; Transport</span><span class="en">Vehicle &amp; Transport</span></h3>
         <p><span class="fr">Voiture de collection, vélo tandem, cheval, scooter… Comment le marié rejoint-il l'autel ?</span><span class="en">Classic car, tandem bike, horse, scooter… How does the groom reach the altar?</span></p>
+        <svg class="card-pixel" width="56" height="40" viewBox="0 0 7 5" shape-rendering="crispEdges"><rect fill="#4A4543" x="1" y="0" width="4" height="1"/><rect fill="#5C5653" x="0" y="1" width="7" height="1"/><rect fill="#4A4543" x="0" y="2" width="7" height="1"/><rect fill="#3A3533" x="0" y="2" width="1" height="1"/><rect fill="#3A3533" x="6" y="2" width="1" height="1"/><rect fill="#D4736C" x="1" y="0" width="1" height="1"/><rect fill="#2A2724" x="1" y="3" width="1" height="1"/><rect fill="#4A4543" x="2" y="3" width="3" height="1"/><rect fill="#2A2724" x="5" y="3" width="1" height="1"/><rect fill="#2A2724" x="0" y="4" width="2" height="1"/><rect fill="#2A2724" x="5" y="4" width="2" height="1"/></svg>
       </div>
       <div class="custom-card c3 rv rv-d2">
         <h3><span class="fr">Personnages</span><span class="en">Characters</span></h3>
         <p><span class="fr">Les personnages vous ressemblent : tenue, coiffure, style. En pixel-art, bien sûr.</span><span class="en">The characters look like you: outfit, hairstyle, style. In pixel art, of course.</span></p>
+        <svg class="card-pixel" width="56" height="56" viewBox="0 0 7 7" shape-rendering="crispEdges"><rect fill="#C9A96E" x="1" y="0" width="1" height="1"/><rect fill="#C9A96E" x="5" y="0" width="1" height="1"/><rect fill="#D4A0A0" x="1" y="1" width="1" height="1"/><rect fill="#D4A0A0" x="5" y="1" width="1" height="1"/><rect fill="#2A2724" x="0" y="2" width="3" height="1"/><rect fill="#E8E0D8" x="4" y="2" width="3" height="1"/><rect fill="#2A2724" x="0" y="3" width="3" height="1"/><rect fill="#E8E0D8" x="4" y="3" width="3" height="1"/><rect fill="#2A2724" x="1" y="4" width="1" height="1"/><rect fill="#E8E0D8" x="5" y="4" width="1" height="1"/><rect fill="#D4A0A0" x="1" y="5" width="1" height="1"/><rect fill="#D4A0A0" x="5" y="5" width="1" height="1"/><rect fill="#2A2724" x="0" y="6" width="1" height="1"/><rect fill="#2A2724" x="2" y="6" width="1" height="1"/><rect fill="#E8E0D8" x="4" y="6" width="1" height="1"/><rect fill="#E8E0D8" x="6" y="6" width="1" height="1"/></svg>
       </div>
       <div class="custom-card c4 rv rv-d3">
         <h3><span class="fr">Musique &amp; Sons</span><span class="en">Music &amp; Sounds</span></h3>
         <p><span class="fr">Une bande-son unique, synthétisée en pixel-art sonore. Du séga au jazz manouche, tout est possible.</span><span class="en">A unique soundtrack, synthesized in sonic pixel art. From sega to gypsy jazz, anything goes.</span></p>
+        <svg class="card-pixel" width="48" height="56" viewBox="0 0 6 7" shape-rendering="crispEdges"><rect fill="#8B9DC3" x="2" y="0" width="2" height="1"/><rect fill="#8B9DC3" x="4" y="0" width="2" height="1"/><rect fill="#8B9DC3" x="1" y="1" width="1" height="1"/><rect fill="#8B9DC3" x="3" y="1" width="1" height="1"/><rect fill="#6B7DA3" x="1" y="2" width="1" height="1"/><rect fill="#6B7DA3" x="1" y="3" width="1" height="1"/><rect fill="#6B7DA3" x="1" y="4" width="1" height="1"/><rect fill="#8B9DC3" x="0" y="5" width="2" height="2"/><rect fill="#8B9DC3" x="3" y="3" width="1" height="1"/><rect fill="#6B7DA3" x="3" y="4" width="1" height="1"/><rect fill="#8B9DC3" x="2" y="5" width="2" height="2"/></svg>
       </div>
       <div class="custom-card c5 rv rv-d4">
         <h3><span class="fr">Obstacles &amp; Défis</span><span class="en">Obstacles &amp; Challenges</span></h3>
         <p><span class="fr">Des clins d'œil à votre histoire : vos inside jokes deviennent les obstacles du jeu.</span><span class="en">Nods to your story: your inside jokes become the game's obstacles.</span></p>
+        <svg class="card-pixel" width="48" height="56" viewBox="0 0 6 7" shape-rendering="crispEdges"><rect fill="#D4A0A0" x="2" y="0" width="2" height="1"/><rect fill="#C48080" x="1" y="1" width="4" height="1"/><rect fill="#D4A0A0" x="2" y="1" width="2" height="1"/><rect fill="#C48080" x="0" y="2" width="6" height="1"/><rect fill="#D4A0A0" x="2" y="2" width="2" height="1"/><rect fill="#C48080" x="0" y="3" width="6" height="1"/><rect fill="#C48080" x="1" y="4" width="4" height="1"/><rect fill="#8B6914" x="2" y="5" width="2" height="1"/><rect fill="#6B4E0A" x="1" y="6" width="4" height="1"/></svg>
       </div>
       <div class="custom-card c6 rv rv-d5">
         <h3><span class="fr">Objets à collecter</span><span class="en">Collectibles</span></h3>
         <p><span class="fr">Cœurs, alliances, bouquets de fleurs, étoiles, diamants, lettres d'amour… Choisissez ce que vos invités collecteront en jouant.</span><span class="en">Hearts, rings, flower bouquets, stars, diamonds, love letters… Choose what your guests will collect as they play.</span></p>
+        <svg class="card-pixel" width="56" height="48" viewBox="0 0 7 6" shape-rendering="crispEdges" fill="#B8A090"><rect x="1" y="0" width="2" height="1"/><rect x="4" y="0" width="2" height="1"/><rect x="0" y="1" width="7" height="2"/><rect x="1" y="3" width="5" height="1"/><rect x="2" y="4" width="3" height="1"/><rect x="3" y="5" width="1" height="1"/></svg>
       </div>
     </div>
   </div>
