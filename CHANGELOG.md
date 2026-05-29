@@ -1,5 +1,26 @@
 # MyWedGame — Changelog
 
+## 2026-05-29 — Feedback amis : storytelling & pricing
+
+- Prix retiré du hero (créer le désir avant d'annoncer le budget)
+- Storytelling : "à trois jours du mariage" → "une semaine avant" (FR+EN)
+- "En quelques heures" → "Quelques jours plus tard" (valoriser le travail)
+
+## 2026-05-28 — Telegram bot + SEO
+
+- Bot Telegram `@mywedgame_bot` créé + token sécurisé en env Vercel
+- API serverless `/api/contact.js` : formulaire → message Telegram formaté
+- Chat ID de Constantin (1274171252) en env var
+- Formulaire envoie en POST JSON (plus de mailto)
+- État loading + écran de succès post-envoi
+- Pixel art cartes refait avec palette exacte du jeu Gustave & Caroline
+  (palmier, Ford Raptor, couple, lagoon, crabe, cœur)
+- OG image réduite à 200×200 (format compact WhatsApp comme Museum Studio)
+- Google Search Console vérifié (méthode balise HTML)
+- Sitemap.xml + robots.txt soumis
+- `.fr` redirigé en 301 vers `.com` (anti duplicate content) via Vercel API
+- Documentation projet : CLAUDE.md, ROADMAP.md, CHANGELOG.md
+
 ## 2026-05-27 — Lot 0 : Lancement
 
 ### Landing page
