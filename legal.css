@@ -1,0 +1,75 @@
+/* Styles partagés des pages utilitaires (mentions légales, confidentialité, CGV, contact). */
+@font-face { font-family: 'Apfel Grotezk'; src: url('fonts/ApfelGrotezk-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Apfel Grotezk'; src: url('fonts/ApfelGrotezk-Fett.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Terminal Grotesque'; src: url('fonts/terminal-grotesque-webfont.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+
+:root {
+  --cream: #FAF7F2;
+  --cream-dark: #F0EBE3;
+  --charcoal: #2A2724;
+  --charcoal-light: #5C5653;
+  --coral: #D4736C;
+  --coral-hover: #BD5B54;
+  --coral-light: #F2DAD7;
+  --gold: #C9A96E;
+  --dark: #1C1917;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* La langue est portée par l'attribut lang du <html> (FR par défaut, EN via le sélecteur). */
+html:not([lang="en"]) .en { display: none !important; }
+html[lang="en"] .fr { display: none !important; }
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  color: var(--charcoal);
+  background: var(--cream);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.legal-ctn { max-width: 780px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 2rem); }
+
+/* Header */
+.legal-header { border-bottom: 1px solid var(--cream-dark); background: rgba(250,247,242,0.9); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 10; }
+.legal-header .legal-ctn { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.legal-logo { display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--charcoal); }
+.legal-logo svg { display: block; }
+.legal-logo .logo-text { font-family: 'Apfel Grotezk', sans-serif; font-weight: 700; font-size: 1.15rem; letter-spacing: -0.01em; }
+.legal-logo .logo-wed { font-family: 'Terminal Grotesque', sans-serif; color: var(--coral); font-weight: 400; }
+
+.lang-toggle { display: flex; border: 1.5px solid var(--charcoal); border-radius: 100px; overflow: hidden; }
+.lang-btn { font: inherit; font-size: 0.8rem; font-weight: 600; padding: 0.25rem 0.7rem; background: transparent; color: var(--charcoal); border: none; cursor: pointer; line-height: 1; }
+.lang-btn.active { background: var(--charcoal); color: var(--cream); }
+
+/* Article */
+.legal-main { padding: clamp(2.5rem, 6vw, 4.5rem) 0 1rem; }
+.legal-article h1 { font-family: 'Terminal Grotesque', sans-serif; font-weight: 400; font-size: clamp(2rem, 6vw, 3rem); line-height: 1.05; margin-bottom: 0.4rem; }
+.legal-updated { color: var(--charcoal-light); font-size: 0.9rem; margin-bottom: 2.5rem; }
+.legal-article h2 { font-size: 1.25rem; font-weight: 700; margin: 2.4rem 0 0.6rem; }
+.legal-article h3 { font-size: 1.02rem; font-weight: 700; margin: 1.4rem 0 0.3rem; }
+.legal-article p, .legal-article li { color: var(--charcoal); font-size: 1rem; }
+.legal-article p + p { margin-top: 0.8rem; }
+.legal-article ul, .legal-article ol { margin: 0.6rem 0 0.6rem 1.4rem; }
+.legal-article li { margin-bottom: 0.35rem; }
+.legal-article a { color: var(--coral); text-decoration: underline; text-underline-offset: 2px; }
+.legal-article a:hover { color: var(--coral-hover); }
+.legal-article strong { font-weight: 700; }
+
+/* Encadré (note / avertissement doux) */
+.legal-note { background: var(--coral-light); border-radius: 14px; padding: 1rem 1.25rem; margin: 1.5rem 0; font-size: 0.95rem; }
+.legal-fill { background: #FFF6E8; border: 1px dashed var(--gold); border-radius: 8px; padding: 0.1rem 0.45rem; font-size: 0.92em; color: #8a6d2f; }
+
+/* Contact spécifique */
+.legal-contact-card { background: white; border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); padding: clamp(1.5rem, 4vw, 2.5rem); margin-top: 1.5rem; }
+.legal-contact-card a.btn { display: inline-block; margin-top: 0.5rem; background: var(--coral); color: white; text-decoration: none; padding: 0.7rem 1.4rem; border-radius: 100px; font-weight: 600; }
+.legal-contact-card a.btn:hover { background: var(--coral-hover); }
+
+/* Footer */
+.legal-footer { border-top: 1px solid var(--cream-dark); margin-top: 3rem; padding: 2rem 0; }
+.legal-footer .legal-ctn { display: flex; flex-wrap: wrap; gap: 0.6rem 1.4rem; align-items: center; justify-content: center; text-align: center; }
+.legal-footer nav { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; justify-content: center; }
+.legal-footer a { color: var(--charcoal-light); text-decoration: none; font-size: 0.88rem; }
+.legal-footer a:hover { color: var(--coral); }
+.legal-footer .legal-copy { width: 100%; text-align: center; color: var(--charcoal-light); font-size: 0.82rem; margin-top: 0.4rem; }

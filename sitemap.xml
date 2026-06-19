@@ -17,4 +17,24 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://mywedgame.com/en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mywedgame.com/"/>
   </url>
+  <url>
+    <loc>https://mywedgame.com/mentions-legales</loc>
+    <lastmod>2026-06-20</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://mywedgame.com/confidentialite</loc>
+    <lastmod>2026-06-20</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://mywedgame.com/cgv</loc>
+    <lastmod>2026-06-20</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://mywedgame.com/contact</loc>
+    <lastmod>2026-06-20</lastmod>
+    <priority>0.3</priority>
+  </url>
 </urlset>

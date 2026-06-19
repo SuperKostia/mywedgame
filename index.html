@@ -244,6 +244,9 @@
     footer .logo { justify-content: center; margin-bottom: 0.75rem; font-size: 1.1rem; }
     footer .logo-my, footer .logo-game { color: rgba(250,247,242,0.6); }
     footer .logo-wed { color: var(--coral); }
+    footer .footer-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; justify-content: center; margin-top: 1.1rem; }
+    footer .footer-links a { color: rgba(250,247,242,0.55); text-decoration: none; }
+    footer .footer-links a:hover { color: var(--coral); }
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
@@ -634,7 +637,13 @@
 <footer>
   <div class="ctn">
     <a href="#" class="logo"><svg class="logo-heart" viewBox="0 0 7 6" shape-rendering="crispEdges" fill="var(--coral)"><use href="#ph"/></svg><span class="logo-text"><span class="logo-my">My</span><span class="logo-wed">Wed</span><span class="logo-game">Game</span></span></a>
-    <p>&copy; 2026 MyWedGame. <span class="fr">Tous droits réservés.</span><span class="en">All rights reserved.</span></p>
+    <nav class="footer-links">
+      <a data-fr="/mentions-legales" data-en="/mentions-legales?lang=en" href="/mentions-legales"><span class="fr">Mentions légales</span><span class="en">Legal notice</span></a>
+      <a data-fr="/confidentialite" data-en="/confidentialite?lang=en" href="/confidentialite"><span class="fr">Confidentialité</span><span class="en">Privacy</span></a>
+      <a data-fr="/cgv" data-en="/cgv?lang=en" href="/cgv"><span class="fr">CGV</span><span class="en">Terms</span></a>
+      <a data-fr="/contact" data-en="/contact?lang=en" href="/contact"><span class="fr">Contact</span><span class="en">Contact</span></a>
+    </nav>
+    <p style="margin-top:1.1rem">&copy; 2026 MyWedGame. <span class="fr">Tous droits réservés.</span><span class="en">All rights reserved.</span></p>
   </div>
 </footer>
 
@@ -645,6 +654,11 @@
   // pour que chaque langue ait une URL stable et indexable.
   var cur = document.documentElement.lang === 'en' ? 'en' : 'fr';
   var urls = { fr: '/', en: '/en' };
+
+  // Liens du footer (légal) : pointer vers la bonne langue selon la page.
+  document.querySelectorAll('a[data-fr][data-en]').forEach(function(a) {
+    a.setAttribute('href', a.dataset[cur]);
+  });
 
   document.querySelectorAll('.lang-btn').forEach(function(btn) {
     var l = btn.dataset.lang;
