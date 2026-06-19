@@ -1,5 +1,14 @@
 # MyWedGame — Changelog
 
+## 2026-06-19 (suite) : Prix de base + menu
+
+- Prix de base passé de 699€ à 499€ TTC. Grille des niveaux : 499 / 599 / 699 /
+  799 (+100€ par niveau inchangé). Mis à jour partout : prix affiché, sélecteur
+  du formulaire, meta description FR + EN, docs.
+- Menu : libellés ton "romantique joueur". FR : Voir le jeu · Notre histoire ·
+  Le prix · On crée le vôtre ? + CTA Je me lance. EN : See the game · Our story ·
+  Pricing · Create yours + Let's go. Le sélecteur FR/EN navigue entre / et /en.
+
 ## 2026-06-19 : Favicon Google + version anglaise SEO
 
 ### Favicon

@@ -61,7 +61,7 @@ robots.txt          : Robots.txt
 - **Sections** : Hero → Démo (iframe jeu) → Notre histoire → Personnalisation (6 cartes) → Comment ça marche → Tarif → Formulaire → FAQ → Footer
 
 ## Pricing
-- **699€ TTC** : jeu sur mesure, 1 niveau
+- **499€ TTC** : jeu sur mesure, 1 niveau
 - **+100€** par niveau supplémentaire
 - Formulaire avec sélecteur de niveaux (1-4) et collectibles (6 options, 2 max)
 

@@ -6,7 +6,7 @@
 - [x] Section "Notre histoire" (genèse Île Maurice)
 - [x] 6 cartes personnalisation avec pixel art du jeu
 - [x] Formulaire configurateur (niveaux, collectibles, histoire)
-- [x] Pricing : 699€ + 100€/niveau
+- [x] Pricing : 499€ + 100€/niveau (base passée de 699 à 499 le 2026-06-19)
 - [x] Toggle FR/EN avec persistence localStorage
 - [x] Typographies : Terminal Grotesque + Apfel Grotezk + DM Sans
 - [x] Logo pixel heart color-cycling + favicon dynamique

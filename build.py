@@ -18,7 +18,7 @@ OUT = pathlib.Path(__file__).parent / "en.html"
 # Équivalents anglais du <head> (zéro tiret cadratin).
 EN = {
     "title": "MyWedGame: a custom video game for your wedding",
-    "description": "Give your guests a unique video game, fully personalized to your love story. From €699.",
+    "description": "Give your guests a unique video game, fully personalized to your love story. From €499.",
     "og:title": "MyWedGame: a custom video game for your wedding",
     "og:description": "A unique, interactive video game created from your love story. Playable on any device.",
     "twitter:title": "MyWedGame: a custom video game for your wedding",
