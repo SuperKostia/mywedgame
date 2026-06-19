@@ -1,5 +1,28 @@
 # MyWedGame — Changelog
 
+## 2026-06-19 : Favicon Google + version anglaise SEO
+
+### Favicon
+- Remplacement du favicon data-URI (illisible par le crawler Google) par de
+  vrais fichiers : favicon.svg / favicon.png (512) / favicon-96 / favicon-32 /
+  apple-touch-icon, référencés via `<link rel="icon">`. Coeur coral sur carré
+  cream arrondi. Animation in-browser conservée, alignée sur le nouveau visuel.
+
+### Version anglaise (/en)
+- Vraie page anglaise à `/en` : `en.html` généré par `build.py` depuis
+  `index.html` (source unique), `lang="en"` + title/meta/OG en anglais.
+- Sélecteur FR/EN : navigation entre `/` et `/en` (URLs stables et indexables)
+  au lieu d'une bascule en place via JS/localStorage.
+- `hreflang` fr / en / x-default sur les deux pages + `canonical` self-referencing.
+- `sitemap.xml` : 2 URLs avec alternates xhtml, `lastmod` 2026-06-19.
+- `vercel.json` : `cleanUrls` + `trailingSlash:false` (sert `en.html` sur `/en`).
+- og:image / twitter:image recalés sur `mywedgame.com` (au lieu de `vercel.app`).
+
+### SEO
+- Suppression de tous les tirets cadratins (title, OG, corps FR + EN).
+- Search Console géré par Claude via `~/mywedgame-seo/gsc.py` (propriété Domaine
+  `sc-domain:mywedgame.com`, robot Perso partagé, sitemap soumis).
+
 ## 2026-05-29 — Feedback amis : storytelling & pricing
 
 - Prix retiré du hero (créer le désir avant d'annoncer le budget)

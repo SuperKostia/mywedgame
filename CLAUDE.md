@@ -23,15 +23,28 @@ vercel --prod
 
 ## Structure
 ```
-index.html          — Landing page complète (HTML + CSS + JS inline)
-api/contact.js      — Serverless function : form → Telegram
-fonts/              — Terminal Grotesque + Apfel Grotezk (woff2, self-hosted)
-og-image.png        — Image OG 200×200 (4 collectibles pixel art)
-og-template.html    — Template pour générer og-image via Playwright
-collectibles.html   — Showcase des 6 collectibles pixel art
-sitemap.xml         — Sitemap pour Google
-robots.txt          — Robots.txt
+index.html          : Landing page FR (source unique HTML + CSS + JS inline)
+en.html             : Version EN, GÉNÉRÉE par build.py (ne pas éditer à la main)
+build.py            : Génère en.html depuis index.html (head EN + lang="en")
+vercel.json         : cleanUrls + trailingSlash:false (sert en.html sur /en)
+api/contact.js      : Serverless function (form vers Telegram)
+fonts/              : Terminal Grotesque + Apfel Grotezk (woff2, self-hosted)
+favicon.svg/.png    : Favicon coeur coral (+ favicon-96/32, apple-touch-icon)
+og-image.png        : Image OG 200x200 (4 collectibles pixel art)
+og-template.html    : Template pour générer og-image via Playwright
+collectibles.html   : Showcase des 6 collectibles pixel art
+sitemap.xml         : Sitemap (/ et /en, avec hreflang)
+robots.txt          : Robots.txt
 ```
+
+## Bilingue (i18n) : RÈGLE IMPORTANTE
+- `index.html` = **source unique**. Il contient tout le contenu FR + EN (blocs
+  `.fr` / `.en`) et `<html lang="fr">`.
+- `/en` est une **vraie page** servie par `en.html`, **généré** par `build.py`.
+- **Après toute modif de `index.html`, relancer `python3 build.py`** sinon la
+  version anglaise reste en retard. (À faire avant chaque commit/déploiement.)
+- Le sélecteur FR/EN navigue entre `/` et `/en` (chaque langue a son URL).
+- `hreflang` (fr/en/x-default) + `canonical` self-referencing sur les deux pages.
 
 ## Env vars (Vercel)
 - `TELEGRAM_BOT_TOKEN` — Token du bot @mywedgame_bot
@@ -40,7 +53,9 @@ robots.txt          — Robots.txt
 ## DA & Design
 - **Palette** : cream #FAF7F2, coral #D4736C, gold #C9A96E, charcoal #2A2724, dark #1C1917
 - **Logo** : pixel heart SVG (color-cycling) + "My" Apfel Grotezk + "WED" Terminal Grotesque (coral) + "Game" Apfel Grotezk
-- **Favicon** : pixel heart SVG, change de couleur toutes les 2s (JS)
+- **Favicon** : vrais fichiers statiques (favicon.svg/.png/-96/-32, apple-touch-icon),
+  coeur coral sur carré cream arrondi (lisible par Google). L'animation color-cycling
+  en JS reste active dans l'onglet du navigateur.
 - **Pixel art** : couleurs extraites du jeu Gustave & Caroline (palette.ts)
 - **Boutons** : arrondis (pill), pas carrés
 - **Sections** : Hero → Démo (iframe jeu) → Notre histoire → Personnalisation (6 cartes) → Comment ça marche → Tarif → Formulaire → FAQ → Footer
