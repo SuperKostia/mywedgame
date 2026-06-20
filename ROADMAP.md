@@ -7,7 +7,7 @@
 - [x] 6 cartes personnalisation avec pixel art du jeu
 - [x] Formulaire configurateur (niveaux, collectibles, histoire)
 - [x] Pricing : 499€ + 100€/niveau (base passée de 699 à 499 le 2026-06-19)
-- [x] Toggle FR/EN avec persistence localStorage
+- [x] Version anglaise réelle à /en (hreflang, sélecteur FR/EN par navigation), refondu le 2026-06-19 (ex toggle localStorage)
 - [x] Typographies : Terminal Grotesque + Apfel Grotezk + DM Sans
 - [x] Logo pixel heart color-cycling + favicon dynamique
 - [x] Deploy Vercel + domaines mywedgame.com/.fr
@@ -21,9 +21,10 @@
 - [ ] Version mobile du jeu iframe (gestion tactile, orientation)
 - [ ] Bouton mute on-screen dans le jeu (vérifier existence)
 - [ ] Témoignages / avis clients
-- [ ] Mentions légales / CGV
+- [x] Pages légales : Mentions légales, Confidentialité, CGV, Contact (2026-06-20)
 - [ ] Page "À propos" dédiée (optionnel)
 - [ ] Analytics Vercel ou Plausible
+- [ ] Modalités de paiement à préciser dans les CGV (placeholder retiré, à formaliser)
 
 ## Lot 2 : Moteur de jeu paramétrable ⬜
 - [ ] Système de configuration JSON (décor, véhicule, personnages, musique)

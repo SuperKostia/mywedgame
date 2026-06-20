@@ -4,7 +4,7 @@
 Landing page bilingue (FR/EN) pour **MyWedGame** — service de création de jeux vidéo pixel-art sur mesure pour les mariages. Le jeu de démonstration (Gustave & Caroline, Île Maurice) est intégré en iframe.
 
 ## Stack
-- **HTML/CSS/JS** single-file (`index.html`), zéro framework, zéro build step
+- **HTML/CSS/JS** single-file (`index.html`), zéro framework. Build minimal : `build.py` génère `en.html` (/en) depuis `index.html`
 - **Vercel** : hébergement + serverless function (`/api/contact.js`)
 - **Telegram Bot** : réception des demandes via `@mywedgame_bot`
 - **Polices** : Terminal Grotesque (titres), Apfel Grotezk (logo/corps bold), DM Sans (corps)
@@ -33,7 +33,9 @@ favicon.svg/.png    : Favicon coeur coral (+ favicon-96/32, apple-touch-icon)
 og-image.png        : Image OG 200x200 (4 collectibles pixel art)
 og-template.html    : Template pour générer og-image via Playwright
 collectibles.html   : Showcase des 6 collectibles pixel art
-sitemap.xml         : Sitemap (/ et /en, avec hreflang)
+mentions-legales.html / confidentialite.html / cgv.html / contact.html : pages légales bilingues
+legal.css / legal.js : styles + sélecteur de langue partagés des pages légales
+sitemap.xml         : Sitemap (/, /en, + 4 pages légales, avec hreflang)
 robots.txt          : Robots.txt
 ```
 
@@ -69,10 +71,18 @@ robots.txt          : Robots.txt
 Cœur, Alliance, Bouquet, Étoile, Diamant, Lettre d'amour — pixel art SVG inline
 
 ## SEO
-- Google Search Console vérifié (meta tag)
-- Sitemap soumis
+- Search Console : propriété Domaine `sc-domain:mywedgame.com`, gérée par Claude
+  via `~/mywedgame-seo/gsc.py` (lecture perfs + soumission sitemap, robot Perso partagé)
+- Sitemap (`/`, `/en`, 4 pages légales) soumis ; hreflang fr/en/x-default
 - og:image, twitter:card, robots.txt
 - `.fr` redirige en 301 vers `.com` (pas de duplicate content)
+
+## Pages légales
+- 4 pages bilingues (`mentions-legales`, `confidentialite`, `cgv`, `contact`), CSS/JS
+  partagés (`legal.css` / `legal.js`), servies en clean URLs, liées au footer.
+- Éditeur = micro-entreprise FR de Constantin (SIRET 848 447 918 00014, 32 rue
+  d'Alleray 75015 Paris, franchise TVA 293 B). Détails en mémoire Claude.
+- Le sélecteur de langue des pages légales bascule en place via `?lang=en` (pas de /en dédié).
 
 ## Décisions prises
 - "Wed" comme abréviation de wedding dans le nom → validé, c'est un nom de marque

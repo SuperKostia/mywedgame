@@ -1,5 +1,18 @@
 # MyWedGame — Changelog
 
+## 2026-06-20 : Pages légales
+
+- 4 pages utilitaires bilingues FR/EN dans la charte (CSS/JS partagés
+  `legal.css` + `legal.js`), servies en clean URLs : `/mentions-legales`,
+  `/confidentialite`, `/cgv`, `/contact`.
+- Liens ajoutés au footer de `/` et `/en` (localisés selon la langue).
+- Confidentialité : flux réel formulaire vers Telegram, RGPD, droits, CNIL.
+- CGV : prix 499€ + 100/niveau, exception de rétractation (prestation sur mesure),
+  TVA non applicable (art. 293 B CGI).
+- Identité éditeur = micro-entreprise FR de Constantin : SIRET 848 447 918 00014,
+  32 rue d'Alleray 75015 Paris (source : attestation URSSAF + avis INSEE SIRENE).
+- `sitemap.xml` : 4 URLs ajoutées (priority 0.3). Sitemap resoumis à Search Console.
+
 ## 2026-06-19 (suite) : Prix de base + menu
 
 - Prix de base passé de 699€ à 499€ TTC. Grille des niveaux : 499 / 599 / 699 /
